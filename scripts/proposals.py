@@ -4,7 +4,7 @@ import requests
 import datetime
 from brownie import Wei
 import pandas as pd
-from abis import *
+from .abis import *
 
 
 VOTING_MACHINE_0 = '0x1C18bAd5a3ee4e96611275B13a8ed062B4a13055'
@@ -29,7 +29,7 @@ def fetch_mainnet():
             print(get_title(p['_descriptionHash']))
             print('0x' + p['_proposalId'].hex())
             if p['_rewards'][1] > 0:
-                print('ETH:', Wei(p['_rewards'][1]))
+                print('ETH:',  Wei(p['_rewards'][1]).to('ether'))
             if p['_rewards'][2] > 0:
                 erc20, decimals = check_erc20(p['_externalToken'])
                 print(f'{erc20}:', p['_rewards'][2] / 10**decimals)
@@ -93,7 +93,7 @@ def fetch_all():
     pass
 
 def check_erc20(address):
-    df = pd.read_csv('tokens.csv')
+    df = pd.read_csv('scripts/tokens.csv')
     if Web3.toChecksumAddress(address) in df.address.values:
         erc20 = df[df['address'] == Web3.toChecksumAddress(address)]
         return erc20['token'].values[0], erc20['decimals'].values[0]
@@ -112,9 +112,20 @@ def get_abi(address, network):
     return abi
 
 def get_title(proposal_hash):
+    ipfs_cache = pd.read_csv('scripts/ipfs_cache.csv')
+    
+    if proposal_hash in ipfs_cache.hash:
+        title = ipfs_cache[ipfs_cache['hash'] == proposal_hash].title
+        return title
     try: 
-        req = requests.get('https://gateway.pinata.cloud/ipfs/' + proposal_hash)
+        req = requests.get('https://ipfs.io/ipfs/' + proposal_hash)
         title = req.json()['title']
+        text = req.json()['description']
+        data = {'hash': proposal_hash,
+                'title': title,
+                'text': text}
+        ipfs_cache = ipfs_cache.append(data, ignore_index=True)
+        ipfs_cache.to_csv('scripts/ipfs_cache.csv', index=False)
     except ValueError:
         title = "IPFS not returning Title"
     return title
@@ -136,4 +147,8 @@ def get_block(network):
     return block
 
 if __name__ == '__main__':
+    print("Mainnet Contributor Proposals:")
+    fetch_mainnet()
+
+    print("GC Contributor Proposals:")
     fetch_xdai()

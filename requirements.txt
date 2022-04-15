@@ -1,0 +1,6 @@
+Brownie==0.5.1
+pandas==1.4.1
+python-dotenv==0.20.0
+requests==2.27.1
+typer==0.4.0
+web3==5.28.0
