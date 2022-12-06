@@ -1,3 +1,6 @@
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import os
 from web3 import Web3
 import requests
@@ -56,7 +59,7 @@ def fetch_mainnet():
 def fetch_xdai():
     net = 'XDAI'
     avatar = '0xe716EC63C5673B3a4732D22909b38d779fa47c3F'
-    w3 = Web3(Web3.HTTPProvider("https://xdai-archive.blockscout.com/"))
+    w3 = Web3(Web3.HTTPProvider("https://eth-mainnet.gateway.pokt.network/v1/5f3453978e354ab992c4da79"))
 
     # Genesis protocol
     gp = w3.eth.contract(address='0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF', abi=gp_abi)
