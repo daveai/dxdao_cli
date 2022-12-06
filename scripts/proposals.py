@@ -32,7 +32,6 @@ def fetch_mainnet():
     for p in proposal_events:
         p = p['args']
         execution_ts = scheme.functions.getProposalExecutionTime('0x' + p['_proposalId'].hex(), avatar).call()
-        state = scheme.functions.proposals('0x' + p['_proposalId'].hex()).call()
         if execution_ts == 0:
             print(get_title(p['_descriptionHash']))
             print('0x' + p['_proposalId'].hex())
