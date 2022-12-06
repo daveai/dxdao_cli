@@ -27,11 +27,12 @@ def fetch_mainnet():
     proposals = scheme.events.NewContributionProposal.createFilter(fromBlock=get_block(net), argument_filters={'_avatar': avatar})
     proposal_events = proposals.get_all_entries()
     
-    print('MAINNET Boosted Contribution Proposals:')
+    print('MAINNET Live Contribution Proposals:')
 
     for p in proposal_events:
         p = p['args']
         execution_ts = scheme.functions.getProposalExecutionTime('0x' + p['_proposalId'].hex(), avatar).call()
+        state = scheme.functions.proposals('0x' + p['_proposalId'].hex()).call()
         if execution_ts == 0:
             print(get_title(p['_descriptionHash']))
             print('0x' + p['_proposalId'].hex())
