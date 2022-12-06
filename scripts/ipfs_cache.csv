@@ -1593,3 +1593,1408 @@ Some security details:
 
 - [Safe can recieve ERC-20 assets](https://etherscan.io/tx/0x222bbdd261f0565812a4b9c9db0bc3e6cdb3b4e3645938c82c8471a1a35f2248)
 - [Safe can send ERC-20 assets](https://etherscan.io/tx/0xce01033d523eb457cf99276ab5e6b1b2f6ab69a9e218cc2aea81695090809de3)"
+QmP2BRVQt1vPHzrZ32o5fGRriik33z23nF7ueo4en9mfmd,DLABS - Whitehat Reward,"<!-- Yay, no errors, warnings, or alerts! -->
+
+This proposal requests 200k USDC as compensation for the [Exploit Disclosure - DXdao Governance](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625).
+
+Overview: The exploit made use of a mismatch between the smart contract functionality and the front end implementations. By setting a `periods` variable when building a proposal manually, a user was able to set a multiplier on their proposal up to `2**256 - 1` (unit256). Allowing a proposal as innocuous as a rep boost to mint 99% of REP in the DAO, effectively turning the DAO into an EOA - as in being able to pass proposals / do transfers instantly.
+
+Interesting fact, an unsigned integer with 256 bits (unit256), means a maximum value (i.e. multiplier) of 115792089237316195423570985008687907853269984665640564039457584007913129639935 could have been set - where even 1 wei of REP minted would have made up over 99% of REP.
+
+During June 2022, after the disclosure above, DXvote reflected periods in the UI. Thereby, making it easier to monitor and reduce risk of such a malicious proposal passing. Furthermore, there are ongoing efforts to add a validation check to the Contributor Scheme so it only accepts new proposals with a single period.
+
+After discussion in the forum, on the weekly dev and governance call, as well as individual conversations with contributors and DXD holders, $200k appears to be an amount with support across the board. A [forum signal vote](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625/16) had 60+% votes over $200k and a [DXD snapshot](https://snapshot.org/#/hack24.eth/proposal/0x3fe5da3a2e700c13bad5482de17f6c17c59c54f24b023bf09f7811d5953499b3) 80+% in the $100k-$200k range.
+
+Note that DLABS was in no way involved in the coding or auditing of the Contribution Scheme contract. In fact, both of these precede the incorporation of DLABS itself. 
+
+This proposal pays $200k USDC to Decentral Labs LLC (DLABS) at dlabs.eth
+"
+QmawXZ4NTutCETNh8FwhGPBPb2WRimrkBb3TVEW6UtgE1x,SkyMine Labs - DXD Vesting Payout for past 7/21 through 12/21 periods combined,"This proposal requests DXD into a vesting contract for the periods:  7/21, 8/21, 9/21, 10/21, 11/21, 12/21 on past proposals.
+
+It corrects for the reference DXD price to use for two of the periods.  
+Details of for Pricing reference: [Worker Compensation Calculator](https://docs.google.com/spreadsheets/d/18K5jVn8HmwQZ9Ve48S90vQAYklIm0heKTTDGHfWXc5s/edit?pli=1#gid=803876057)
+
+Original proposals:
+
+1) [SkyMine Labs - 07/21 to 08/21 Contribution Recap & Payment ](https://dxvote.eth.limo/#/xdai/proposal/0x1ee03a7aaf51dbf1141231e2dea8def21fb3728a336baf53620bf521801b5cad)
+- 10,636 USD to be paid in DXD using 07/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 07/01/21 ref price is $523 giving a DXD amount of 20.3365
+
+2) [SkyMine Labs - 09/21 to 10/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x24c61c18ac1f4afc0ecd60f453022dea18063f70e15cc68c977d1753f0445750)
+- 10,800 USD to be paid in DXD using 09/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 09/01/21 ref price is $567 giving a DXD amount of 19.0476
+
+3) [SkyMine Labs - 11/21 to 12/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x05dfa41ff99783199be34ac23ea21ae165505ab01cd4cf1bf3c532b3796a88c4)
+- 9,600 USD to be paid in DXD using 11/01/2021 as the starting date of the vesting.
+- The Reference Price for the starting date of 11/1/21 ref price is $698.72 giving a DXD amount of 13.7394
+
+
+------
+
+I am combining all three of these proposals into one vesting contract using the latest starting date of 1-Nov-21.
+
+Proposal Summary:
+- Request 53.1235 DXD (20.3365 + 19.0476 + 13.7394) to one vesting contract with start date 1-Nov-21, 1 year Cliff and 2 years Duration.  
+- Contract is: 0x33CE72cc0d8645C7089c665F3467db26199d8aE4
+"
+QmXxDCHJ14o7RnxFB8SyS5m6tRo5TE7PNyqrM7g2crVn9M,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x969d12a4da0f7d71790F006C896e877Eb2e8812D
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xf45e8fadab9252d0f87702c0cb602bd6b7fcef641438d524e38f7996426e54df
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmV2eFyBi9H1xdoQcgTEvZah5aqTfUFiBtspMRG8qZiyM7,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x9eCD726A27751F117b8C3024E0afA66E08DE67df
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa278f48b2db6be3bb4498c20064966698e2b013d158266ff24012eababd2345d
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmfUs9mkcu3h9cxF38mGUmRN83PTjU1MRVDBVWFeiFgjdC,dlabs vesting contract May - Aug 2022,"This proposal requests 55.884 DXD to be sent to the following vesting contract: 0x608459e98AE29E63B2509f341C000c8308ffFFCa
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0x6b593bc84870ff360a2c1360cb79630f6456c902f01d2216e4983729ec1075af
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[5/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-may-23rd-june/4166)	6/2022	[7/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-july-23rd-september/4364/2)	8/2022.  
+12.863	14.340	14.340	14.340
+
+Total: 55.884"
+QmR39pEqGQ5mGhnGjXJjuMS4y7uTdUFaLSEm13s4seNDJ7,dlabs vesting contract Sept - Dec 2022,"This proposal requests 57.360 DXD to be sent to the following vesting contract: 0x293B2EfBBf97a1ceeA2B479a4d026cbc1E918769
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa5fee410372ead06bf780f2d2bbcb1c8cbe32961489c1fd22df87252fa8ec0cf
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[9/2022](https://daotalk.org/t/dlabs-worker-proposal-23-sept-to-23-nov/4541)	10/2022	[11/2022](https://daotalk.org/t/dlabs-worker-proposal-23-nov-to-23-jan/4720)	12/2022.  
+14.340	14.340	14.340	14.340
+
+Total: 57.360"
+QmV4uU6frapxa7Q5rHn4pYpJuLPhdn7CJgtQb2DcT2sihM,Approve New DXD Token Model,"
+_Tldr: The DXD Token Working Group proposes a new token model, where “DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.”_
+
+## Background
+
+The DXD Bonding Curve was [launched in May of 2020](https://dxvote.eth.limo/#/mainnet/proposal/0xeb9cf2b3d76664dc1e983137f33b2400ad11966b1d79399d7ca55c25ad6283fa) by DXdao. The bonding curve was an effective fundraising tool but the mint/burn functions of the contract were never able to create a liquid market for DXD. In May 2021, DXdao [launched the DXD Buyback program](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) which purchased DXD off the open market using ETH from the general treasury as well as from the buyback reserve. The program [bought over 15,000 DXD](https://docs.google.com/spreadsheets/d/17C1fcq5JshfG8Zsi_Sv7lmqrrsdT9DKB69XMBkrUp2s/edit#gid=1629643942) (30% of circulating supply), but it was never viewed as a sustainable long-term model for DXD value accrual.
+
+Since the bonding curve launched, DXdao has built and managed several DeFi and governance products, diversified its treasury into $10m+ of stablecoins, and has a team of 20+ full-time contributors focused on building and growing the DXdao ecosystem. The DXD token is at the center of this ecosystem, but there has not been a formal link between the value that DXdao creates and the DXD token. This creates uncertainty for DXD holders, especially as DXD has traded at a significant discount to book value.
+
+In August 2022, DXdao [launched the DXD Token Working Group](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) to draft a long-term model for DXD. The below signal proposal is an output from the Working Group.
+
+The proposal commits DXdao to:
+
+
+
+* Introduce four tools in the DXD Monetary Policy Framework that would enable a fair and liquid market for DXD
+* Establish a DXD Monetary Policy Committee
+* Funding product development and other initiatives that further DXdao’s core mission to enable community freedom 
+
+To further simplify and answer the question, “Why is DXD valuable?”, the WG affirms: **DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.**
+
+## Details
+
+**DXD Monetary Policy Framework**
+This proposal establishes four tools to be used by DXdao governance under guidance from the DXD Monetary Policy Committee. These are:
+
+
+
+* DXD Floor Price Guarantee - DXdao commits to buying any amount of DXD on the open market 
+* Inverse bonds - smart contracts where DXD can be deposited for a defined period of time in return for a certain % of DXdao treasury assets 
+* New DXD minted - allow DXD to be minted in exchange for assets at full NAV
+* Protocol-owned liquidity for DXD
+
+**DXD Monetary Policy Committee**
+Management of these tools requires close tracking of the DXD market as well as DXdao’s treasury. The committee should be at least three individuals and also include full-time contributors. This work should be compensated in vested DXD. The committee is tasked with:
+
+
+
+* Providing quarterly reports on general general direction and outlook of DXD
+* Issue monthly recommendations on inverse bond issuance and protocol-owned liquidity
+* Work with DXdao governance and treasury on managing redemptions
+
+**Product development funding**
+DXdao’s mission is to enable community freedom. It was launched in 2019 as a radical experiment in decentralization. The DXD fundraiser was intended to raise funds for product development in line with this vision. The new token model represents a new social contract between REP & DXD holders. The DXD Token WG affirms DXdao’s commitment to building and funding decentralized products that enable community freedom by committing at least 6% of DXdao’s treasury to fund DXdao’s product & operations for a year.
+
+This % can be changed at any time by governance and represents an overall budget suggestion for DXdao and is not a mandate to spend that amount, nor a maximum amount . This incentivizes the community to grow the size of the treasury.
+
+## Implementation
+
+This signal proposal is the output of the DXD Token Working Group, and if passed by REP & DXD holders, should be implemented by DXdao. Some of the elements will require significant development work before they can be put into practice. In the DXD Monetary Policy Framework, the DXD Floor Price Guarantee and the protocol-owned liquidity can be implemented using DXdao’s existing governance tools. 
+
+This proposal commits to implement:
+
+
+
+* DXD Floor Price Guarantee priced at 70% of the current DXD-NAV Ratio (DXD's circulating market cap to Treasury NAV)
+* Provide $250k in DXD/ETH on mainnet once DXD price hits 60% of Treasury NAV, another $250k deposit at 65%, and a $500k deposit when it hits 70% of NAV
+* When ready, DXdao governance commits to issuing:
+    * $500k in DXD inverse bonds with 85% payout after 6 months will be issued, along with 
+    * $500k in DXD inverse bonds with 90% of NAV payout after one year, and
+     - $1m in DXD Inverse bonds with 100% NAV payout after two years
+* The current DXD token contract should be upgraded and the funds returned to the general treasury
+
+## Definition and clarifications
+
+
+
+* Treasury NAV - ultimately defined by governance through guidance from the DXD Monetary Policy Committee. This proposal affirms treasury NAV includes all stablecoins, ETH (including staked ETH and other derivatives), Swapr LPs or other liquidity provisioning instruments. It incorporates the value of other treasury assets (like SWPR, ENS, etc) with a pre-defined liquidity discount. The DXD-NAV ratio is the DXD circulating market cap (as defined in the last DXD buyback proposal) divided by the Treasury NAV. This will be calculated at least bi-weekly. The [latest version can be found here](https://docs.google.com/spreadsheets/d/1mS1sVmyP0Z3YiA1JiZpHgPHjSIh3da7MawpjQodE34Y/edit#gid=0).
+* Inverse bonds - these will be individually launched according to specific parameters (duration, dividend stream, etc). The bonds should payout the % of NAV when they are due, not the NAV when the bond is issued or the DXD deposited. Bonds will need to have a redemption currency of either ETH or Dai/USDC.
+* DXD Monetary Policy Committee is meant to involve engaged DXD holders in the formation of policy, but report preparation will need to be completed by DXdao contributors. Details of this will be further provided in the upcoming budget presentations by DXdao governance.
+* DXdao may implement other tools to the DXD Monetary Policy Framework in addition to the four listed above. The goal is to incentivize an organic fair market for DXD with minimal open market operations and minimal changes to the underlying liquidity for the treasury.
+* Execution of the price floor guarantee will occur on-chain through various trustless models. Previous DXD purchases were in smaller amounts, so executing on a larger scale will require more coordination.
+
+
+### Meeting Links:
+ - [DXD Token Meeting #1 (Sep 1)](https://daotalk.org/t/dxd-token-working-group-kick-off-call/4494)
+ - [DXD Token Meeting #2 (Sep 15)](https://daotalk.org/t/dxd-token-wg-meeting-comparison-of-token-models-sep-15/4530)
+ - [DXD Token Meeting #3 (Sep 29)](https://daotalk.org/t/dxd-token-wg-meeting-3-dxd-token-models-sep-29/4562)
+ - [DXD Token Meeting #4 (Nov 3)](https://daotalk.org/t/dxd-token-wg-meeting-4-nov-3/4640)
+ - [DXD Token Meeting #5 (Nov 17)](https://daotalk.org/t/dxd-token-wg-meeting-5-nov-17/4704)"
+QmTc8nDFpCUE9gYcXN8bHpWCk6CFX3wTsRHWyHyeqssH8j,SkyMine Labs - DXD Vesting Payout for past 1/22 through 4/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 1/22, 2/22, 3/22, 4/22
+
+Original proposals:
+
+1) [SkyMine Labs - 1/22 to 2/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0x610e201c8ac544589cd9d2743e3463344fe4d43065abe6726211eb59d53c4032)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 1/1/22 ref price is $535.85 giving a DXD amount of 15.956 based on USD 8,550
+- The Reference Price for the starting date of 2/1/22 ref price is $546.37 giving a DXD amount of 15.649 based on USD 8,550
+
+2) [SkyMine Labs - 3/22 to 4/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x7fb7e060c4b6442e2cbd4fbd48bde7005c8553c9fa10f27d8d266793593fab6b)
+- 16,150 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 3/1/22 ref price is $590.69 giving a DXD amount of 12.866 based on USD 7,600
+- The Reference Price for the starting date of 4/1/22 ref price is $750.90 giving a DXD amount of 11.386 based on USD 8,550
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Mar-22.
+
+Proposal Summary:
+- Request 55.857 to one vesting contract with start date 1-Mar-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x0C0FADa36A993b4546e7FC859BBa5fBA9ec01EF8
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmTNpsmdRuqpQ6VVvrvjdyr3H9Asrcuvv8gjB2G1S5YCVh,Claim Mainnet REP for SkyMine Labs - 7/22 to 8/22 and 9/22 to 10/22 periods,"This proposal claims Mainnet REP earned by SkyMine Labs for 7/22 to 8/22 and 9/22 to 10/22 periods.
+
+The following worker proposals were submitted and executed on Gnosis Chain with REP based off Mainnet REP at the time and referenced:
+
+[SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- Mainnet Ref Total REP: 2,167,871 so 0.2333% was 5,057 REP
+
+[SkyMine Labs - 9/22 to 10/22 Contribution Recap (reduced)](https://develop.dxvote.dev/#/xdai/proposal/0xec858a8e7d15391003980fed53639f6b563ea66dfb8ccdf535d3675cded04036)
+- Mainnet Ref Total REP: 2,184,232 so 0.28332% was 6,188 REP
+
+-----
+
+As discussed on the May 26 Governance discussion, this proposal claims the REP award for these proposals. 
+
+In total, SkyMine Labs is claiming 11,245 Mainnet REP.
+
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmdPy6BNLeNioroRcAvr1urr4XqvqHsrnJZ8LY5wW7A2Rx,DXvoice Multi-Sig -- Final top-up and new wallet authorization,"This proposal has been prepared to fund the DXvoice multi-sig with enough USDC to facilitate the payment of its remaining initiatives from 2022. 
+
+It also formally authorizes the updated DXvoice multi-sig and associated signers on each of its deployed chains.
+
+# Final payment details
+
+- Carrot Landing Page 2/2 -- **$3500** owed
+- Carrot marketing and landing page video 2/2 -- **$8000** to be owed
+- Total = **$11500 requested in USDC**
+
+Any currently held funds will be utilized on an as-needs basis for small initiatives. 
+
+# Multi-Sig Authorization
+
+- DXvoice MS (Multichain) 3 of 5 (**0x00Ce8162527Da8bD59056E2A54C3726886cBa676**) on Mainnet, Gnosis Chain, Polygon and Arbitrum One
+- **Signers (each containing more than 1% of REP) include:**
+  -  0x29e1a61fccd40408f489336993E798d14D57d77f
+  -  0x734C242BA2d6A47644093F874FA4dad15005CF19
+  -  0x91628ddc3A6ff9B48A2f34fC315D243eB07a9501
+  -  0x91AEF3c3b9BAb2c306548269Ff9b6771f2B107D8
+  -  0xB5806a701c2ae0366e15BDe9bE140E82190fa3d6
+
+Passage of this proposal formally recognizes the above multi-sig (0x00Ce8162527Da8bD59056E2A54C3726886cBa676) as the new definitive DXvoice MS. This would 'replace' the previous multi-sig, [found here](https://etherscan.io/address/0x35685398af991F43813475E189F791610ad0BE2b). 
+
+Some security details:
+
+- [Safe can recieve ERC-20 assets](https://etherscan.io/tx/0x222bbdd261f0565812a4b9c9db0bc3e6cdb3b4e3645938c82c8471a1a35f2248)
+- [Safe can send ERC-20 assets](https://etherscan.io/tx/0xce01033d523eb457cf99276ab5e6b1b2f6ab69a9e218cc2aea81695090809de3)"
+QmP2BRVQt1vPHzrZ32o5fGRriik33z23nF7ueo4en9mfmd,DLABS - Whitehat Reward,"<!-- Yay, no errors, warnings, or alerts! -->
+
+This proposal requests 200k USDC as compensation for the [Exploit Disclosure - DXdao Governance](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625).
+
+Overview: The exploit made use of a mismatch between the smart contract functionality and the front end implementations. By setting a `periods` variable when building a proposal manually, a user was able to set a multiplier on their proposal up to `2**256 - 1` (unit256). Allowing a proposal as innocuous as a rep boost to mint 99% of REP in the DAO, effectively turning the DAO into an EOA - as in being able to pass proposals / do transfers instantly.
+
+Interesting fact, an unsigned integer with 256 bits (unit256), means a maximum value (i.e. multiplier) of 115792089237316195423570985008687907853269984665640564039457584007913129639935 could have been set - where even 1 wei of REP minted would have made up over 99% of REP.
+
+During June 2022, after the disclosure above, DXvote reflected periods in the UI. Thereby, making it easier to monitor and reduce risk of such a malicious proposal passing. Furthermore, there are ongoing efforts to add a validation check to the Contributor Scheme so it only accepts new proposals with a single period.
+
+After discussion in the forum, on the weekly dev and governance call, as well as individual conversations with contributors and DXD holders, $200k appears to be an amount with support across the board. A [forum signal vote](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625/16) had 60+% votes over $200k and a [DXD snapshot](https://snapshot.org/#/hack24.eth/proposal/0x3fe5da3a2e700c13bad5482de17f6c17c59c54f24b023bf09f7811d5953499b3) 80+% in the $100k-$200k range.
+
+Note that DLABS was in no way involved in the coding or auditing of the Contribution Scheme contract. In fact, both of these precede the incorporation of DLABS itself. 
+
+This proposal pays $200k USDC to Decentral Labs LLC (DLABS) at dlabs.eth
+"
+QmawXZ4NTutCETNh8FwhGPBPb2WRimrkBb3TVEW6UtgE1x,SkyMine Labs - DXD Vesting Payout for past 7/21 through 12/21 periods combined,"This proposal requests DXD into a vesting contract for the periods:  7/21, 8/21, 9/21, 10/21, 11/21, 12/21 on past proposals.
+
+It corrects for the reference DXD price to use for two of the periods.  
+Details of for Pricing reference: [Worker Compensation Calculator](https://docs.google.com/spreadsheets/d/18K5jVn8HmwQZ9Ve48S90vQAYklIm0heKTTDGHfWXc5s/edit?pli=1#gid=803876057)
+
+Original proposals:
+
+1) [SkyMine Labs - 07/21 to 08/21 Contribution Recap & Payment ](https://dxvote.eth.limo/#/xdai/proposal/0x1ee03a7aaf51dbf1141231e2dea8def21fb3728a336baf53620bf521801b5cad)
+- 10,636 USD to be paid in DXD using 07/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 07/01/21 ref price is $523 giving a DXD amount of 20.3365
+
+2) [SkyMine Labs - 09/21 to 10/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x24c61c18ac1f4afc0ecd60f453022dea18063f70e15cc68c977d1753f0445750)
+- 10,800 USD to be paid in DXD using 09/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 09/01/21 ref price is $567 giving a DXD amount of 19.0476
+
+3) [SkyMine Labs - 11/21 to 12/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x05dfa41ff99783199be34ac23ea21ae165505ab01cd4cf1bf3c532b3796a88c4)
+- 9,600 USD to be paid in DXD using 11/01/2021 as the starting date of the vesting.
+- The Reference Price for the starting date of 11/1/21 ref price is $698.72 giving a DXD amount of 13.7394
+
+
+------
+
+I am combining all three of these proposals into one vesting contract using the latest starting date of 1-Nov-21.
+
+Proposal Summary:
+- Request 53.1235 DXD (20.3365 + 19.0476 + 13.7394) to one vesting contract with start date 1-Nov-21, 1 year Cliff and 2 years Duration.  
+- Contract is: 0x33CE72cc0d8645C7089c665F3467db26199d8aE4
+"
+QmXxDCHJ14o7RnxFB8SyS5m6tRo5TE7PNyqrM7g2crVn9M,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x969d12a4da0f7d71790F006C896e877Eb2e8812D
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xf45e8fadab9252d0f87702c0cb602bd6b7fcef641438d524e38f7996426e54df
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmV2eFyBi9H1xdoQcgTEvZah5aqTfUFiBtspMRG8qZiyM7,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x9eCD726A27751F117b8C3024E0afA66E08DE67df
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa278f48b2db6be3bb4498c20064966698e2b013d158266ff24012eababd2345d
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmfUs9mkcu3h9cxF38mGUmRN83PTjU1MRVDBVWFeiFgjdC,dlabs vesting contract May - Aug 2022,"This proposal requests 55.884 DXD to be sent to the following vesting contract: 0x608459e98AE29E63B2509f341C000c8308ffFFCa
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0x6b593bc84870ff360a2c1360cb79630f6456c902f01d2216e4983729ec1075af
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[5/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-may-23rd-june/4166)	6/2022	[7/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-july-23rd-september/4364/2)	8/2022.  
+12.863	14.340	14.340	14.340
+
+Total: 55.884"
+QmR39pEqGQ5mGhnGjXJjuMS4y7uTdUFaLSEm13s4seNDJ7,dlabs vesting contract Sept - Dec 2022,"This proposal requests 57.360 DXD to be sent to the following vesting contract: 0x293B2EfBBf97a1ceeA2B479a4d026cbc1E918769
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa5fee410372ead06bf780f2d2bbcb1c8cbe32961489c1fd22df87252fa8ec0cf
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[9/2022](https://daotalk.org/t/dlabs-worker-proposal-23-sept-to-23-nov/4541)	10/2022	[11/2022](https://daotalk.org/t/dlabs-worker-proposal-23-nov-to-23-jan/4720)	12/2022.  
+14.340	14.340	14.340	14.340
+
+Total: 57.360"
+QmV4uU6frapxa7Q5rHn4pYpJuLPhdn7CJgtQb2DcT2sihM,Approve New DXD Token Model,"
+_Tldr: The DXD Token Working Group proposes a new token model, where “DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.”_
+
+## Background
+
+The DXD Bonding Curve was [launched in May of 2020](https://dxvote.eth.limo/#/mainnet/proposal/0xeb9cf2b3d76664dc1e983137f33b2400ad11966b1d79399d7ca55c25ad6283fa) by DXdao. The bonding curve was an effective fundraising tool but the mint/burn functions of the contract were never able to create a liquid market for DXD. In May 2021, DXdao [launched the DXD Buyback program](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) which purchased DXD off the open market using ETH from the general treasury as well as from the buyback reserve. The program [bought over 15,000 DXD](https://docs.google.com/spreadsheets/d/17C1fcq5JshfG8Zsi_Sv7lmqrrsdT9DKB69XMBkrUp2s/edit#gid=1629643942) (30% of circulating supply), but it was never viewed as a sustainable long-term model for DXD value accrual.
+
+Since the bonding curve launched, DXdao has built and managed several DeFi and governance products, diversified its treasury into $10m+ of stablecoins, and has a team of 20+ full-time contributors focused on building and growing the DXdao ecosystem. The DXD token is at the center of this ecosystem, but there has not been a formal link between the value that DXdao creates and the DXD token. This creates uncertainty for DXD holders, especially as DXD has traded at a significant discount to book value.
+
+In August 2022, DXdao [launched the DXD Token Working Group](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) to draft a long-term model for DXD. The below signal proposal is an output from the Working Group.
+
+The proposal commits DXdao to:
+
+
+
+* Introduce four tools in the DXD Monetary Policy Framework that would enable a fair and liquid market for DXD
+* Establish a DXD Monetary Policy Committee
+* Funding product development and other initiatives that further DXdao’s core mission to enable community freedom 
+
+To further simplify and answer the question, “Why is DXD valuable?”, the WG affirms: **DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.**
+
+## Details
+
+**DXD Monetary Policy Framework**
+This proposal establishes four tools to be used by DXdao governance under guidance from the DXD Monetary Policy Committee. These are:
+
+
+
+* DXD Floor Price Guarantee - DXdao commits to buying any amount of DXD on the open market 
+* Inverse bonds - smart contracts where DXD can be deposited for a defined period of time in return for a certain % of DXdao treasury assets 
+* New DXD minted - allow DXD to be minted in exchange for assets at full NAV
+* Protocol-owned liquidity for DXD
+
+**DXD Monetary Policy Committee**
+Management of these tools requires close tracking of the DXD market as well as DXdao’s treasury. The committee should be at least three individuals and also include full-time contributors. This work should be compensated in vested DXD. The committee is tasked with:
+
+
+
+* Providing quarterly reports on general general direction and outlook of DXD
+* Issue monthly recommendations on inverse bond issuance and protocol-owned liquidity
+* Work with DXdao governance and treasury on managing redemptions
+
+**Product development funding**
+DXdao’s mission is to enable community freedom. It was launched in 2019 as a radical experiment in decentralization. The DXD fundraiser was intended to raise funds for product development in line with this vision. The new token model represents a new social contract between REP & DXD holders. The DXD Token WG affirms DXdao’s commitment to building and funding decentralized products that enable community freedom by committing at least 6% of DXdao’s treasury to fund DXdao’s product & operations for a year.
+
+This % can be changed at any time by governance and represents an overall budget suggestion for DXdao and is not a mandate to spend that amount, nor a maximum amount . This incentivizes the community to grow the size of the treasury.
+
+## Implementation
+
+This signal proposal is the output of the DXD Token Working Group, and if passed by REP & DXD holders, should be implemented by DXdao. Some of the elements will require significant development work before they can be put into practice. In the DXD Monetary Policy Framework, the DXD Floor Price Guarantee and the protocol-owned liquidity can be implemented using DXdao’s existing governance tools. 
+
+This proposal commits to implement:
+
+
+
+* DXD Floor Price Guarantee priced at 70% of the current DXD-NAV Ratio (DXD's circulating market cap to Treasury NAV)
+* Provide $250k in DXD/ETH on mainnet once DXD price hits 60% of Treasury NAV, another $250k deposit at 65%, and a $500k deposit when it hits 70% of NAV
+* When ready, DXdao governance commits to issuing:
+    * $500k in DXD inverse bonds with 85% payout after 6 months will be issued, along with 
+    * $500k in DXD inverse bonds with 90% of NAV payout after one year, and
+     - $1m in DXD Inverse bonds with 100% NAV payout after two years
+* The current DXD token contract should be upgraded and the funds returned to the general treasury
+
+## Definition and clarifications
+
+
+
+* Treasury NAV - ultimately defined by governance through guidance from the DXD Monetary Policy Committee. This proposal affirms treasury NAV includes all stablecoins, ETH (including staked ETH and other derivatives), Swapr LPs or other liquidity provisioning instruments. It incorporates the value of other treasury assets (like SWPR, ENS, etc) with a pre-defined liquidity discount. The DXD-NAV ratio is the DXD circulating market cap (as defined in the last DXD buyback proposal) divided by the Treasury NAV. This will be calculated at least bi-weekly. The [latest version can be found here](https://docs.google.com/spreadsheets/d/1mS1sVmyP0Z3YiA1JiZpHgPHjSIh3da7MawpjQodE34Y/edit#gid=0).
+* Inverse bonds - these will be individually launched according to specific parameters (duration, dividend stream, etc). The bonds should payout the % of NAV when they are due, not the NAV when the bond is issued or the DXD deposited. Bonds will need to have a redemption currency of either ETH or Dai/USDC.
+* DXD Monetary Policy Committee is meant to involve engaged DXD holders in the formation of policy, but report preparation will need to be completed by DXdao contributors. Details of this will be further provided in the upcoming budget presentations by DXdao governance.
+* DXdao may implement other tools to the DXD Monetary Policy Framework in addition to the four listed above. The goal is to incentivize an organic fair market for DXD with minimal open market operations and minimal changes to the underlying liquidity for the treasury.
+* Execution of the price floor guarantee will occur on-chain through various trustless models. Previous DXD purchases were in smaller amounts, so executing on a larger scale will require more coordination.
+
+
+### Meeting Links:
+ - [DXD Token Meeting #1 (Sep 1)](https://daotalk.org/t/dxd-token-working-group-kick-off-call/4494)
+ - [DXD Token Meeting #2 (Sep 15)](https://daotalk.org/t/dxd-token-wg-meeting-comparison-of-token-models-sep-15/4530)
+ - [DXD Token Meeting #3 (Sep 29)](https://daotalk.org/t/dxd-token-wg-meeting-3-dxd-token-models-sep-29/4562)
+ - [DXD Token Meeting #4 (Nov 3)](https://daotalk.org/t/dxd-token-wg-meeting-4-nov-3/4640)
+ - [DXD Token Meeting #5 (Nov 17)](https://daotalk.org/t/dxd-token-wg-meeting-5-nov-17/4704)"
+QmTc8nDFpCUE9gYcXN8bHpWCk6CFX3wTsRHWyHyeqssH8j,SkyMine Labs - DXD Vesting Payout for past 1/22 through 4/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 1/22, 2/22, 3/22, 4/22
+
+Original proposals:
+
+1) [SkyMine Labs - 1/22 to 2/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0x610e201c8ac544589cd9d2743e3463344fe4d43065abe6726211eb59d53c4032)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 1/1/22 ref price is $535.85 giving a DXD amount of 15.956 based on USD 8,550
+- The Reference Price for the starting date of 2/1/22 ref price is $546.37 giving a DXD amount of 15.649 based on USD 8,550
+
+2) [SkyMine Labs - 3/22 to 4/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x7fb7e060c4b6442e2cbd4fbd48bde7005c8553c9fa10f27d8d266793593fab6b)
+- 16,150 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 3/1/22 ref price is $590.69 giving a DXD amount of 12.866 based on USD 7,600
+- The Reference Price for the starting date of 4/1/22 ref price is $750.90 giving a DXD amount of 11.386 based on USD 8,550
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Mar-22.
+
+Proposal Summary:
+- Request 55.857 to one vesting contract with start date 1-Mar-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x0C0FADa36A993b4546e7FC859BBa5fBA9ec01EF8
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmTNpsmdRuqpQ6VVvrvjdyr3H9Asrcuvv8gjB2G1S5YCVh,Claim Mainnet REP for SkyMine Labs - 7/22 to 8/22 and 9/22 to 10/22 periods,"This proposal claims Mainnet REP earned by SkyMine Labs for 7/22 to 8/22 and 9/22 to 10/22 periods.
+
+The following worker proposals were submitted and executed on Gnosis Chain with REP based off Mainnet REP at the time and referenced:
+
+[SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- Mainnet Ref Total REP: 2,167,871 so 0.2333% was 5,057 REP
+
+[SkyMine Labs - 9/22 to 10/22 Contribution Recap (reduced)](https://develop.dxvote.dev/#/xdai/proposal/0xec858a8e7d15391003980fed53639f6b563ea66dfb8ccdf535d3675cded04036)
+- Mainnet Ref Total REP: 2,184,232 so 0.28332% was 6,188 REP
+
+-----
+
+As discussed on the May 26 Governance discussion, this proposal claims the REP award for these proposals. 
+
+In total, SkyMine Labs is claiming 11,245 Mainnet REP.
+
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmdPy6BNLeNioroRcAvr1urr4XqvqHsrnJZ8LY5wW7A2Rx,DXvoice Multi-Sig -- Final top-up and new wallet authorization,"This proposal has been prepared to fund the DXvoice multi-sig with enough USDC to facilitate the payment of its remaining initiatives from 2022. 
+
+It also formally authorizes the updated DXvoice multi-sig and associated signers on each of its deployed chains.
+
+# Final payment details
+
+- Carrot Landing Page 2/2 -- **$3500** owed
+- Carrot marketing and landing page video 2/2 -- **$8000** to be owed
+- Total = **$11500 requested in USDC**
+
+Any currently held funds will be utilized on an as-needs basis for small initiatives. 
+
+# Multi-Sig Authorization
+
+- DXvoice MS (Multichain) 3 of 5 (**0x00Ce8162527Da8bD59056E2A54C3726886cBa676**) on Mainnet, Gnosis Chain, Polygon and Arbitrum One
+- **Signers (each containing more than 1% of REP) include:**
+  -  0x29e1a61fccd40408f489336993E798d14D57d77f
+  -  0x734C242BA2d6A47644093F874FA4dad15005CF19
+  -  0x91628ddc3A6ff9B48A2f34fC315D243eB07a9501
+  -  0x91AEF3c3b9BAb2c306548269Ff9b6771f2B107D8
+  -  0xB5806a701c2ae0366e15BDe9bE140E82190fa3d6
+
+Passage of this proposal formally recognizes the above multi-sig (0x00Ce8162527Da8bD59056E2A54C3726886cBa676) as the new definitive DXvoice MS. This would 'replace' the previous multi-sig, [found here](https://etherscan.io/address/0x35685398af991F43813475E189F791610ad0BE2b). 
+
+Some security details:
+
+- [Safe can recieve ERC-20 assets](https://etherscan.io/tx/0x222bbdd261f0565812a4b9c9db0bc3e6cdb3b4e3645938c82c8471a1a35f2248)
+- [Safe can send ERC-20 assets](https://etherscan.io/tx/0xce01033d523eb457cf99276ab5e6b1b2f6ab69a9e218cc2aea81695090809de3)"
+QmP2BRVQt1vPHzrZ32o5fGRriik33z23nF7ueo4en9mfmd,DLABS - Whitehat Reward,"<!-- Yay, no errors, warnings, or alerts! -->
+
+This proposal requests 200k USDC as compensation for the [Exploit Disclosure - DXdao Governance](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625).
+
+Overview: The exploit made use of a mismatch between the smart contract functionality and the front end implementations. By setting a `periods` variable when building a proposal manually, a user was able to set a multiplier on their proposal up to `2**256 - 1` (unit256). Allowing a proposal as innocuous as a rep boost to mint 99% of REP in the DAO, effectively turning the DAO into an EOA - as in being able to pass proposals / do transfers instantly.
+
+Interesting fact, an unsigned integer with 256 bits (unit256), means a maximum value (i.e. multiplier) of 115792089237316195423570985008687907853269984665640564039457584007913129639935 could have been set - where even 1 wei of REP minted would have made up over 99% of REP.
+
+During June 2022, after the disclosure above, DXvote reflected periods in the UI. Thereby, making it easier to monitor and reduce risk of such a malicious proposal passing. Furthermore, there are ongoing efforts to add a validation check to the Contributor Scheme so it only accepts new proposals with a single period.
+
+After discussion in the forum, on the weekly dev and governance call, as well as individual conversations with contributors and DXD holders, $200k appears to be an amount with support across the board. A [forum signal vote](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625/16) had 60+% votes over $200k and a [DXD snapshot](https://snapshot.org/#/hack24.eth/proposal/0x3fe5da3a2e700c13bad5482de17f6c17c59c54f24b023bf09f7811d5953499b3) 80+% in the $100k-$200k range.
+
+Note that DLABS was in no way involved in the coding or auditing of the Contribution Scheme contract. In fact, both of these precede the incorporation of DLABS itself. 
+
+This proposal pays $200k USDC to Decentral Labs LLC (DLABS) at dlabs.eth
+"
+QmawXZ4NTutCETNh8FwhGPBPb2WRimrkBb3TVEW6UtgE1x,SkyMine Labs - DXD Vesting Payout for past 7/21 through 12/21 periods combined,"This proposal requests DXD into a vesting contract for the periods:  7/21, 8/21, 9/21, 10/21, 11/21, 12/21 on past proposals.
+
+It corrects for the reference DXD price to use for two of the periods.  
+Details of for Pricing reference: [Worker Compensation Calculator](https://docs.google.com/spreadsheets/d/18K5jVn8HmwQZ9Ve48S90vQAYklIm0heKTTDGHfWXc5s/edit?pli=1#gid=803876057)
+
+Original proposals:
+
+1) [SkyMine Labs - 07/21 to 08/21 Contribution Recap & Payment ](https://dxvote.eth.limo/#/xdai/proposal/0x1ee03a7aaf51dbf1141231e2dea8def21fb3728a336baf53620bf521801b5cad)
+- 10,636 USD to be paid in DXD using 07/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 07/01/21 ref price is $523 giving a DXD amount of 20.3365
+
+2) [SkyMine Labs - 09/21 to 10/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x24c61c18ac1f4afc0ecd60f453022dea18063f70e15cc68c977d1753f0445750)
+- 10,800 USD to be paid in DXD using 09/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 09/01/21 ref price is $567 giving a DXD amount of 19.0476
+
+3) [SkyMine Labs - 11/21 to 12/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x05dfa41ff99783199be34ac23ea21ae165505ab01cd4cf1bf3c532b3796a88c4)
+- 9,600 USD to be paid in DXD using 11/01/2021 as the starting date of the vesting.
+- The Reference Price for the starting date of 11/1/21 ref price is $698.72 giving a DXD amount of 13.7394
+
+
+------
+
+I am combining all three of these proposals into one vesting contract using the latest starting date of 1-Nov-21.
+
+Proposal Summary:
+- Request 53.1235 DXD (20.3365 + 19.0476 + 13.7394) to one vesting contract with start date 1-Nov-21, 1 year Cliff and 2 years Duration.  
+- Contract is: 0x33CE72cc0d8645C7089c665F3467db26199d8aE4
+"
+QmXxDCHJ14o7RnxFB8SyS5m6tRo5TE7PNyqrM7g2crVn9M,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x969d12a4da0f7d71790F006C896e877Eb2e8812D
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xf45e8fadab9252d0f87702c0cb602bd6b7fcef641438d524e38f7996426e54df
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmV2eFyBi9H1xdoQcgTEvZah5aqTfUFiBtspMRG8qZiyM7,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x9eCD726A27751F117b8C3024E0afA66E08DE67df
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa278f48b2db6be3bb4498c20064966698e2b013d158266ff24012eababd2345d
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmfUs9mkcu3h9cxF38mGUmRN83PTjU1MRVDBVWFeiFgjdC,dlabs vesting contract May - Aug 2022,"This proposal requests 55.884 DXD to be sent to the following vesting contract: 0x608459e98AE29E63B2509f341C000c8308ffFFCa
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0x6b593bc84870ff360a2c1360cb79630f6456c902f01d2216e4983729ec1075af
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[5/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-may-23rd-june/4166)	6/2022	[7/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-july-23rd-september/4364/2)	8/2022.  
+12.863	14.340	14.340	14.340
+
+Total: 55.884"
+QmR39pEqGQ5mGhnGjXJjuMS4y7uTdUFaLSEm13s4seNDJ7,dlabs vesting contract Sept - Dec 2022,"This proposal requests 57.360 DXD to be sent to the following vesting contract: 0x293B2EfBBf97a1ceeA2B479a4d026cbc1E918769
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa5fee410372ead06bf780f2d2bbcb1c8cbe32961489c1fd22df87252fa8ec0cf
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[9/2022](https://daotalk.org/t/dlabs-worker-proposal-23-sept-to-23-nov/4541)	10/2022	[11/2022](https://daotalk.org/t/dlabs-worker-proposal-23-nov-to-23-jan/4720)	12/2022.  
+14.340	14.340	14.340	14.340
+
+Total: 57.360"
+QmV4uU6frapxa7Q5rHn4pYpJuLPhdn7CJgtQb2DcT2sihM,Approve New DXD Token Model,"
+_Tldr: The DXD Token Working Group proposes a new token model, where “DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.”_
+
+## Background
+
+The DXD Bonding Curve was [launched in May of 2020](https://dxvote.eth.limo/#/mainnet/proposal/0xeb9cf2b3d76664dc1e983137f33b2400ad11966b1d79399d7ca55c25ad6283fa) by DXdao. The bonding curve was an effective fundraising tool but the mint/burn functions of the contract were never able to create a liquid market for DXD. In May 2021, DXdao [launched the DXD Buyback program](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) which purchased DXD off the open market using ETH from the general treasury as well as from the buyback reserve. The program [bought over 15,000 DXD](https://docs.google.com/spreadsheets/d/17C1fcq5JshfG8Zsi_Sv7lmqrrsdT9DKB69XMBkrUp2s/edit#gid=1629643942) (30% of circulating supply), but it was never viewed as a sustainable long-term model for DXD value accrual.
+
+Since the bonding curve launched, DXdao has built and managed several DeFi and governance products, diversified its treasury into $10m+ of stablecoins, and has a team of 20+ full-time contributors focused on building and growing the DXdao ecosystem. The DXD token is at the center of this ecosystem, but there has not been a formal link between the value that DXdao creates and the DXD token. This creates uncertainty for DXD holders, especially as DXD has traded at a significant discount to book value.
+
+In August 2022, DXdao [launched the DXD Token Working Group](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) to draft a long-term model for DXD. The below signal proposal is an output from the Working Group.
+
+The proposal commits DXdao to:
+
+
+
+* Introduce four tools in the DXD Monetary Policy Framework that would enable a fair and liquid market for DXD
+* Establish a DXD Monetary Policy Committee
+* Funding product development and other initiatives that further DXdao’s core mission to enable community freedom 
+
+To further simplify and answer the question, “Why is DXD valuable?”, the WG affirms: **DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.**
+
+## Details
+
+**DXD Monetary Policy Framework**
+This proposal establishes four tools to be used by DXdao governance under guidance from the DXD Monetary Policy Committee. These are:
+
+
+
+* DXD Floor Price Guarantee - DXdao commits to buying any amount of DXD on the open market 
+* Inverse bonds - smart contracts where DXD can be deposited for a defined period of time in return for a certain % of DXdao treasury assets 
+* New DXD minted - allow DXD to be minted in exchange for assets at full NAV
+* Protocol-owned liquidity for DXD
+
+**DXD Monetary Policy Committee**
+Management of these tools requires close tracking of the DXD market as well as DXdao’s treasury. The committee should be at least three individuals and also include full-time contributors. This work should be compensated in vested DXD. The committee is tasked with:
+
+
+
+* Providing quarterly reports on general general direction and outlook of DXD
+* Issue monthly recommendations on inverse bond issuance and protocol-owned liquidity
+* Work with DXdao governance and treasury on managing redemptions
+
+**Product development funding**
+DXdao’s mission is to enable community freedom. It was launched in 2019 as a radical experiment in decentralization. The DXD fundraiser was intended to raise funds for product development in line with this vision. The new token model represents a new social contract between REP & DXD holders. The DXD Token WG affirms DXdao’s commitment to building and funding decentralized products that enable community freedom by committing at least 6% of DXdao’s treasury to fund DXdao’s product & operations for a year.
+
+This % can be changed at any time by governance and represents an overall budget suggestion for DXdao and is not a mandate to spend that amount, nor a maximum amount . This incentivizes the community to grow the size of the treasury.
+
+## Implementation
+
+This signal proposal is the output of the DXD Token Working Group, and if passed by REP & DXD holders, should be implemented by DXdao. Some of the elements will require significant development work before they can be put into practice. In the DXD Monetary Policy Framework, the DXD Floor Price Guarantee and the protocol-owned liquidity can be implemented using DXdao’s existing governance tools. 
+
+This proposal commits to implement:
+
+
+
+* DXD Floor Price Guarantee priced at 70% of the current DXD-NAV Ratio (DXD's circulating market cap to Treasury NAV)
+* Provide $250k in DXD/ETH on mainnet once DXD price hits 60% of Treasury NAV, another $250k deposit at 65%, and a $500k deposit when it hits 70% of NAV
+* When ready, DXdao governance commits to issuing:
+    * $500k in DXD inverse bonds with 85% payout after 6 months will be issued, along with 
+    * $500k in DXD inverse bonds with 90% of NAV payout after one year, and
+     - $1m in DXD Inverse bonds with 100% NAV payout after two years
+* The current DXD token contract should be upgraded and the funds returned to the general treasury
+
+## Definition and clarifications
+
+
+
+* Treasury NAV - ultimately defined by governance through guidance from the DXD Monetary Policy Committee. This proposal affirms treasury NAV includes all stablecoins, ETH (including staked ETH and other derivatives), Swapr LPs or other liquidity provisioning instruments. It incorporates the value of other treasury assets (like SWPR, ENS, etc) with a pre-defined liquidity discount. The DXD-NAV ratio is the DXD circulating market cap (as defined in the last DXD buyback proposal) divided by the Treasury NAV. This will be calculated at least bi-weekly. The [latest version can be found here](https://docs.google.com/spreadsheets/d/1mS1sVmyP0Z3YiA1JiZpHgPHjSIh3da7MawpjQodE34Y/edit#gid=0).
+* Inverse bonds - these will be individually launched according to specific parameters (duration, dividend stream, etc). The bonds should payout the % of NAV when they are due, not the NAV when the bond is issued or the DXD deposited. Bonds will need to have a redemption currency of either ETH or Dai/USDC.
+* DXD Monetary Policy Committee is meant to involve engaged DXD holders in the formation of policy, but report preparation will need to be completed by DXdao contributors. Details of this will be further provided in the upcoming budget presentations by DXdao governance.
+* DXdao may implement other tools to the DXD Monetary Policy Framework in addition to the four listed above. The goal is to incentivize an organic fair market for DXD with minimal open market operations and minimal changes to the underlying liquidity for the treasury.
+* Execution of the price floor guarantee will occur on-chain through various trustless models. Previous DXD purchases were in smaller amounts, so executing on a larger scale will require more coordination.
+
+
+### Meeting Links:
+ - [DXD Token Meeting #1 (Sep 1)](https://daotalk.org/t/dxd-token-working-group-kick-off-call/4494)
+ - [DXD Token Meeting #2 (Sep 15)](https://daotalk.org/t/dxd-token-wg-meeting-comparison-of-token-models-sep-15/4530)
+ - [DXD Token Meeting #3 (Sep 29)](https://daotalk.org/t/dxd-token-wg-meeting-3-dxd-token-models-sep-29/4562)
+ - [DXD Token Meeting #4 (Nov 3)](https://daotalk.org/t/dxd-token-wg-meeting-4-nov-3/4640)
+ - [DXD Token Meeting #5 (Nov 17)](https://daotalk.org/t/dxd-token-wg-meeting-5-nov-17/4704)"
+QmTc8nDFpCUE9gYcXN8bHpWCk6CFX3wTsRHWyHyeqssH8j,SkyMine Labs - DXD Vesting Payout for past 1/22 through 4/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 1/22, 2/22, 3/22, 4/22
+
+Original proposals:
+
+1) [SkyMine Labs - 1/22 to 2/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0x610e201c8ac544589cd9d2743e3463344fe4d43065abe6726211eb59d53c4032)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 1/1/22 ref price is $535.85 giving a DXD amount of 15.956 based on USD 8,550
+- The Reference Price for the starting date of 2/1/22 ref price is $546.37 giving a DXD amount of 15.649 based on USD 8,550
+
+2) [SkyMine Labs - 3/22 to 4/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x7fb7e060c4b6442e2cbd4fbd48bde7005c8553c9fa10f27d8d266793593fab6b)
+- 16,150 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 3/1/22 ref price is $590.69 giving a DXD amount of 12.866 based on USD 7,600
+- The Reference Price for the starting date of 4/1/22 ref price is $750.90 giving a DXD amount of 11.386 based on USD 8,550
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Mar-22.
+
+Proposal Summary:
+- Request 55.857 to one vesting contract with start date 1-Mar-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x0C0FADa36A993b4546e7FC859BBa5fBA9ec01EF8
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmTNpsmdRuqpQ6VVvrvjdyr3H9Asrcuvv8gjB2G1S5YCVh,Claim Mainnet REP for SkyMine Labs - 7/22 to 8/22 and 9/22 to 10/22 periods,"This proposal claims Mainnet REP earned by SkyMine Labs for 7/22 to 8/22 and 9/22 to 10/22 periods.
+
+The following worker proposals were submitted and executed on Gnosis Chain with REP based off Mainnet REP at the time and referenced:
+
+[SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- Mainnet Ref Total REP: 2,167,871 so 0.2333% was 5,057 REP
+
+[SkyMine Labs - 9/22 to 10/22 Contribution Recap (reduced)](https://develop.dxvote.dev/#/xdai/proposal/0xec858a8e7d15391003980fed53639f6b563ea66dfb8ccdf535d3675cded04036)
+- Mainnet Ref Total REP: 2,184,232 so 0.28332% was 6,188 REP
+
+-----
+
+As discussed on the May 26 Governance discussion, this proposal claims the REP award for these proposals. 
+
+In total, SkyMine Labs is claiming 11,245 Mainnet REP.
+
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmdPy6BNLeNioroRcAvr1urr4XqvqHsrnJZ8LY5wW7A2Rx,DXvoice Multi-Sig -- Final top-up and new wallet authorization,"This proposal has been prepared to fund the DXvoice multi-sig with enough USDC to facilitate the payment of its remaining initiatives from 2022. 
+
+It also formally authorizes the updated DXvoice multi-sig and associated signers on each of its deployed chains.
+
+# Final payment details
+
+- Carrot Landing Page 2/2 -- **$3500** owed
+- Carrot marketing and landing page video 2/2 -- **$8000** to be owed
+- Total = **$11500 requested in USDC**
+
+Any currently held funds will be utilized on an as-needs basis for small initiatives. 
+
+# Multi-Sig Authorization
+
+- DXvoice MS (Multichain) 3 of 5 (**0x00Ce8162527Da8bD59056E2A54C3726886cBa676**) on Mainnet, Gnosis Chain, Polygon and Arbitrum One
+- **Signers (each containing more than 1% of REP) include:**
+  -  0x29e1a61fccd40408f489336993E798d14D57d77f
+  -  0x734C242BA2d6A47644093F874FA4dad15005CF19
+  -  0x91628ddc3A6ff9B48A2f34fC315D243eB07a9501
+  -  0x91AEF3c3b9BAb2c306548269Ff9b6771f2B107D8
+  -  0xB5806a701c2ae0366e15BDe9bE140E82190fa3d6
+
+Passage of this proposal formally recognizes the above multi-sig (0x00Ce8162527Da8bD59056E2A54C3726886cBa676) as the new definitive DXvoice MS. This would 'replace' the previous multi-sig, [found here](https://etherscan.io/address/0x35685398af991F43813475E189F791610ad0BE2b). 
+
+Some security details:
+
+- [Safe can recieve ERC-20 assets](https://etherscan.io/tx/0x222bbdd261f0565812a4b9c9db0bc3e6cdb3b4e3645938c82c8471a1a35f2248)
+- [Safe can send ERC-20 assets](https://etherscan.io/tx/0xce01033d523eb457cf99276ab5e6b1b2f6ab69a9e218cc2aea81695090809de3)"
+QmP2BRVQt1vPHzrZ32o5fGRriik33z23nF7ueo4en9mfmd,DLABS - Whitehat Reward,"<!-- Yay, no errors, warnings, or alerts! -->
+
+This proposal requests 200k USDC as compensation for the [Exploit Disclosure - DXdao Governance](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625).
+
+Overview: The exploit made use of a mismatch between the smart contract functionality and the front end implementations. By setting a `periods` variable when building a proposal manually, a user was able to set a multiplier on their proposal up to `2**256 - 1` (unit256). Allowing a proposal as innocuous as a rep boost to mint 99% of REP in the DAO, effectively turning the DAO into an EOA - as in being able to pass proposals / do transfers instantly.
+
+Interesting fact, an unsigned integer with 256 bits (unit256), means a maximum value (i.e. multiplier) of 115792089237316195423570985008687907853269984665640564039457584007913129639935 could have been set - where even 1 wei of REP minted would have made up over 99% of REP.
+
+During June 2022, after the disclosure above, DXvote reflected periods in the UI. Thereby, making it easier to monitor and reduce risk of such a malicious proposal passing. Furthermore, there are ongoing efforts to add a validation check to the Contributor Scheme so it only accepts new proposals with a single period.
+
+After discussion in the forum, on the weekly dev and governance call, as well as individual conversations with contributors and DXD holders, $200k appears to be an amount with support across the board. A [forum signal vote](https://daotalk.org/t/exploit-disclosure-dxdao-governance/4625/16) had 60+% votes over $200k and a [DXD snapshot](https://snapshot.org/#/hack24.eth/proposal/0x3fe5da3a2e700c13bad5482de17f6c17c59c54f24b023bf09f7811d5953499b3) 80+% in the $100k-$200k range.
+
+Note that DLABS was in no way involved in the coding or auditing of the Contribution Scheme contract. In fact, both of these precede the incorporation of DLABS itself. 
+
+This proposal pays $200k USDC to Decentral Labs LLC (DLABS) at dlabs.eth
+"
+QmawXZ4NTutCETNh8FwhGPBPb2WRimrkBb3TVEW6UtgE1x,SkyMine Labs - DXD Vesting Payout for past 7/21 through 12/21 periods combined,"This proposal requests DXD into a vesting contract for the periods:  7/21, 8/21, 9/21, 10/21, 11/21, 12/21 on past proposals.
+
+It corrects for the reference DXD price to use for two of the periods.  
+Details of for Pricing reference: [Worker Compensation Calculator](https://docs.google.com/spreadsheets/d/18K5jVn8HmwQZ9Ve48S90vQAYklIm0heKTTDGHfWXc5s/edit?pli=1#gid=803876057)
+
+Original proposals:
+
+1) [SkyMine Labs - 07/21 to 08/21 Contribution Recap & Payment ](https://dxvote.eth.limo/#/xdai/proposal/0x1ee03a7aaf51dbf1141231e2dea8def21fb3728a336baf53620bf521801b5cad)
+- 10,636 USD to be paid in DXD using 07/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 07/01/21 ref price is $523 giving a DXD amount of 20.3365
+
+2) [SkyMine Labs - 09/21 to 10/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x24c61c18ac1f4afc0ecd60f453022dea18063f70e15cc68c977d1753f0445750)
+- 10,800 USD to be paid in DXD using 09/01/2021 as the starting date of the vesting.
+- Correcting the Reference Price to be inline with how vesting is working, the proposal starting date of 09/01/21 ref price is $567 giving a DXD amount of 19.0476
+
+3) [SkyMine Labs - 11/21 to 12/21 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x05dfa41ff99783199be34ac23ea21ae165505ab01cd4cf1bf3c532b3796a88c4)
+- 9,600 USD to be paid in DXD using 11/01/2021 as the starting date of the vesting.
+- The Reference Price for the starting date of 11/1/21 ref price is $698.72 giving a DXD amount of 13.7394
+
+
+------
+
+I am combining all three of these proposals into one vesting contract using the latest starting date of 1-Nov-21.
+
+Proposal Summary:
+- Request 53.1235 DXD (20.3365 + 19.0476 + 13.7394) to one vesting contract with start date 1-Nov-21, 1 year Cliff and 2 years Duration.  
+- Contract is: 0x33CE72cc0d8645C7089c665F3467db26199d8aE4
+"
+QmXxDCHJ14o7RnxFB8SyS5m6tRo5TE7PNyqrM7g2crVn9M,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x969d12a4da0f7d71790F006C896e877Eb2e8812D
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xf45e8fadab9252d0f87702c0cb602bd6b7fcef641438d524e38f7996426e54df
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmV2eFyBi9H1xdoQcgTEvZah5aqTfUFiBtspMRG8qZiyM7,dlabs vesting contract Jan - Apr 2022,"This proposal requests 50.408 DXD to be sent to the following vesting contract: 0x9eCD726A27751F117b8C3024E0afA66E08DE67df
+
+The vesting contract has 3 years duration starting in April 2021 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa278f48b2db6be3bb4498c20064966698e2b013d158266ff24012eababd2345d
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[1/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-january-to-18th-of-march/3791)	2/2022	[3/2022](https://daotalk.org/t/decentral-labs-worker-proposal-18th-of-march-to-18th-of-may/3987)	4/2022.  
+13.996	13.727	12.697	9.988
+
+Total: 50.408"
+QmfUs9mkcu3h9cxF38mGUmRN83PTjU1MRVDBVWFeiFgjdC,dlabs vesting contract May - Aug 2022,"This proposal requests 55.884 DXD to be sent to the following vesting contract: 0x608459e98AE29E63B2509f341C000c8308ffFFCa
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0x6b593bc84870ff360a2c1360cb79630f6456c902f01d2216e4983729ec1075af
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[5/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-may-23rd-june/4166)	6/2022	[7/2022](https://daotalk.org/t/dlabs-worker-proposal-23rd-july-23rd-september/4364/2)	8/2022.  
+12.863	14.340	14.340	14.340
+
+Total: 55.884"
+QmR39pEqGQ5mGhnGjXJjuMS4y7uTdUFaLSEm13s4seNDJ7,dlabs vesting contract Sept - Dec 2022,"This proposal requests 57.360 DXD to be sent to the following vesting contract: 0x293B2EfBBf97a1ceeA2B479a4d026cbc1E918769
+
+The vesting contract has 3 years duration starting in Aug 2022 with 1 year cliff (I bulked 4 months together and delayed overall vesting, because I don't want to have 30+ different vesting contract i.e. one per month). Params can be verified in the contract creation txs: https://etherscan.io/tx/0xa5fee410372ead06bf780f2d2bbcb1c8cbe32961489c1fd22df87252fa8ec0cf
+
+The vesting amounts have been [calculated by @AllyQ](https://docs.google.com/spreadsheets/d/1IXYsUKzJVltsp9J7YSouTqyUXwg-e6cRky9m7KSFa7I/edit#gid=0):
+
+[9/2022](https://daotalk.org/t/dlabs-worker-proposal-23-sept-to-23-nov/4541)	10/2022	[11/2022](https://daotalk.org/t/dlabs-worker-proposal-23-nov-to-23-jan/4720)	12/2022.  
+14.340	14.340	14.340	14.340
+
+Total: 57.360"
+QmV4uU6frapxa7Q5rHn4pYpJuLPhdn7CJgtQb2DcT2sihM,Approve New DXD Token Model,"
+_Tldr: The DXD Token Working Group proposes a new token model, where “DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.”_
+
+## Background
+
+The DXD Bonding Curve was [launched in May of 2020](https://dxvote.eth.limo/#/mainnet/proposal/0xeb9cf2b3d76664dc1e983137f33b2400ad11966b1d79399d7ca55c25ad6283fa) by DXdao. The bonding curve was an effective fundraising tool but the mint/burn functions of the contract were never able to create a liquid market for DXD. In May 2021, DXdao [launched the DXD Buyback program](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) which purchased DXD off the open market using ETH from the general treasury as well as from the buyback reserve. The program [bought over 15,000 DXD](https://docs.google.com/spreadsheets/d/17C1fcq5JshfG8Zsi_Sv7lmqrrsdT9DKB69XMBkrUp2s/edit#gid=1629643942) (30% of circulating supply), but it was never viewed as a sustainable long-term model for DXD value accrual.
+
+Since the bonding curve launched, DXdao has built and managed several DeFi and governance products, diversified its treasury into $10m+ of stablecoins, and has a team of 20+ full-time contributors focused on building and growing the DXdao ecosystem. The DXD token is at the center of this ecosystem, but there has not been a formal link between the value that DXdao creates and the DXD token. This creates uncertainty for DXD holders, especially as DXD has traded at a significant discount to book value.
+
+In August 2022, DXdao [launched the DXD Token Working Group](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) to draft a long-term model for DXD. The below signal proposal is an output from the Working Group.
+
+The proposal commits DXdao to:
+
+
+
+* Introduce four tools in the DXD Monetary Policy Framework that would enable a fair and liquid market for DXD
+* Establish a DXD Monetary Policy Committee
+* Funding product development and other initiatives that further DXdao’s core mission to enable community freedom 
+
+To further simplify and answer the question, “Why is DXD valuable?”, the WG affirms: **DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.**
+
+## Details
+
+**DXD Monetary Policy Framework**
+This proposal establishes four tools to be used by DXdao governance under guidance from the DXD Monetary Policy Committee. These are:
+
+
+
+* DXD Floor Price Guarantee - DXdao commits to buying any amount of DXD on the open market 
+* Inverse bonds - smart contracts where DXD can be deposited for a defined period of time in return for a certain % of DXdao treasury assets 
+* New DXD minted - allow DXD to be minted in exchange for assets at full NAV
+* Protocol-owned liquidity for DXD
+
+**DXD Monetary Policy Committee**
+Management of these tools requires close tracking of the DXD market as well as DXdao’s treasury. The committee should be at least three individuals and also include full-time contributors. This work should be compensated in vested DXD. The committee is tasked with:
+
+
+
+* Providing quarterly reports on general general direction and outlook of DXD
+* Issue monthly recommendations on inverse bond issuance and protocol-owned liquidity
+* Work with DXdao governance and treasury on managing redemptions
+
+**Product development funding**
+DXdao’s mission is to enable community freedom. It was launched in 2019 as a radical experiment in decentralization. The DXD fundraiser was intended to raise funds for product development in line with this vision. The new token model represents a new social contract between REP & DXD holders. The DXD Token WG affirms DXdao’s commitment to building and funding decentralized products that enable community freedom by committing at least 6% of DXdao’s treasury to fund DXdao’s product & operations for a year.
+
+This % can be changed at any time by governance and represents an overall budget suggestion for DXdao and is not a mandate to spend that amount, nor a maximum amount . This incentivizes the community to grow the size of the treasury.
+
+## Implementation
+
+This signal proposal is the output of the DXD Token Working Group, and if passed by REP & DXD holders, should be implemented by DXdao. Some of the elements will require significant development work before they can be put into practice. In the DXD Monetary Policy Framework, the DXD Floor Price Guarantee and the protocol-owned liquidity can be implemented using DXdao’s existing governance tools. 
+
+This proposal commits to implement:
+
+
+
+* DXD Floor Price Guarantee priced at 70% of the current DXD-NAV Ratio (DXD's circulating market cap to Treasury NAV)
+* Provide $250k in DXD/ETH on mainnet once DXD price hits 60% of Treasury NAV, another $250k deposit at 65%, and a $500k deposit when it hits 70% of NAV
+* When ready, DXdao governance commits to issuing:
+    * $500k in DXD inverse bonds with 85% payout after 6 months will be issued, along with 
+    * $500k in DXD inverse bonds with 90% of NAV payout after one year, and
+     - $1m in DXD Inverse bonds with 100% NAV payout after two years
+* The current DXD token contract should be upgraded and the funds returned to the general treasury
+
+## Definition and clarifications
+
+
+
+* Treasury NAV - ultimately defined by governance through guidance from the DXD Monetary Policy Committee. This proposal affirms treasury NAV includes all stablecoins, ETH (including staked ETH and other derivatives), Swapr LPs or other liquidity provisioning instruments. It incorporates the value of other treasury assets (like SWPR, ENS, etc) with a pre-defined liquidity discount. The DXD-NAV ratio is the DXD circulating market cap (as defined in the last DXD buyback proposal) divided by the Treasury NAV. This will be calculated at least bi-weekly. The [latest version can be found here](https://docs.google.com/spreadsheets/d/1mS1sVmyP0Z3YiA1JiZpHgPHjSIh3da7MawpjQodE34Y/edit#gid=0).
+* Inverse bonds - these will be individually launched according to specific parameters (duration, dividend stream, etc). The bonds should payout the % of NAV when they are due, not the NAV when the bond is issued or the DXD deposited. Bonds will need to have a redemption currency of either ETH or Dai/USDC.
+* DXD Monetary Policy Committee is meant to involve engaged DXD holders in the formation of policy, but report preparation will need to be completed by DXdao contributors. Details of this will be further provided in the upcoming budget presentations by DXdao governance.
+* DXdao may implement other tools to the DXD Monetary Policy Framework in addition to the four listed above. The goal is to incentivize an organic fair market for DXD with minimal open market operations and minimal changes to the underlying liquidity for the treasury.
+* Execution of the price floor guarantee will occur on-chain through various trustless models. Previous DXD purchases were in smaller amounts, so executing on a larger scale will require more coordination.
+
+
+### Meeting Links:
+ - [DXD Token Meeting #1 (Sep 1)](https://daotalk.org/t/dxd-token-working-group-kick-off-call/4494)
+ - [DXD Token Meeting #2 (Sep 15)](https://daotalk.org/t/dxd-token-wg-meeting-comparison-of-token-models-sep-15/4530)
+ - [DXD Token Meeting #3 (Sep 29)](https://daotalk.org/t/dxd-token-wg-meeting-3-dxd-token-models-sep-29/4562)
+ - [DXD Token Meeting #4 (Nov 3)](https://daotalk.org/t/dxd-token-wg-meeting-4-nov-3/4640)
+ - [DXD Token Meeting #5 (Nov 17)](https://daotalk.org/t/dxd-token-wg-meeting-5-nov-17/4704)"
+QmTc8nDFpCUE9gYcXN8bHpWCk6CFX3wTsRHWyHyeqssH8j,SkyMine Labs - DXD Vesting Payout for past 1/22 through 4/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 1/22, 2/22, 3/22, 4/22
+
+Original proposals:
+
+1) [SkyMine Labs - 1/22 to 2/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0x610e201c8ac544589cd9d2743e3463344fe4d43065abe6726211eb59d53c4032)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 1/1/22 ref price is $535.85 giving a DXD amount of 15.956 based on USD 8,550
+- The Reference Price for the starting date of 2/1/22 ref price is $546.37 giving a DXD amount of 15.649 based on USD 8,550
+
+2) [SkyMine Labs - 3/22 to 4/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0x7fb7e060c4b6442e2cbd4fbd48bde7005c8553c9fa10f27d8d266793593fab6b)
+- 16,150 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 3/1/22 ref price is $590.69 giving a DXD amount of 12.866 based on USD 7,600
+- The Reference Price for the starting date of 4/1/22 ref price is $750.90 giving a DXD amount of 11.386 based on USD 8,550
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Mar-22.
+
+Proposal Summary:
+- Request 55.857 to one vesting contract with start date 1-Mar-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x0C0FADa36A993b4546e7FC859BBa5fBA9ec01EF8
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmTNpsmdRuqpQ6VVvrvjdyr3H9Asrcuvv8gjB2G1S5YCVh,Claim Mainnet REP for SkyMine Labs - 7/22 to 8/22 and 9/22 to 10/22 periods,"This proposal claims Mainnet REP earned by SkyMine Labs for 7/22 to 8/22 and 9/22 to 10/22 periods.
+
+The following worker proposals were submitted and executed on Gnosis Chain with REP based off Mainnet REP at the time and referenced:
+
+[SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- Mainnet Ref Total REP: 2,167,871 so 0.2333% was 5,057 REP
+
+[SkyMine Labs - 9/22 to 10/22 Contribution Recap (reduced)](https://develop.dxvote.dev/#/xdai/proposal/0xec858a8e7d15391003980fed53639f6b563ea66dfb8ccdf535d3675cded04036)
+- Mainnet Ref Total REP: 2,184,232 so 0.28332% was 6,188 REP
+
+-----
+
+As discussed on the May 26 Governance discussion, this proposal claims the REP award for these proposals. 
+
+In total, SkyMine Labs is claiming 11,245 Mainnet REP.
+
+"
+QmR7SqRkHYcqJeMwHksvWJaQzK2DxLcMdNtTASU1a2pyHL,SkyMine Labs - DXD Vesting Payout for past 5/22 through 8/22 periods combined,"This proposal requests DXD into a vesting contract for the periods: 5/22, 6/22, 7/22, 8/22
+
+Original proposals:
+
+1) [SkyMine Labs - 5/22 to 6/22 Contribution Recap & Payment](https://develop.dxvote.dev/#/xdai/proposal/0xb3145c4252f217ab172f7c4441f6e0856839dc3da2c16ce54107459ac854842f)
+- 17,100 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 5/1/22 ref price is $583.07 giving a DXD amount of 14.664 based on USD 8,550
+- The Reference Price for the starting date of 6/1/22 ref price is $523 giving a DXD amount of 16.348 based on USD 8,550
+
+2) [SkyMine Labs - 7/22 to 8/22 Contribution Recap](https://develop.dxvote.dev/#/xdai/proposal/0xf49596a5292ac04804137cce23528aea9faa2bceb6be7d5ec73c203951cad57e)
+- 13,300 USD to be paid in DXD in a vesting contract continuously for three years with a one year cliff.
+- The Reference Price for the starting date of 7/1/22 ref price is $523 giving a DXD amount of 9.990 based on USD 5,225
+- The Reference Price for the starting date of 8/1/22 ref price is $523 giving a DXD amount of 15.440 based on USD 8,075
+
+------
+
+I am combining both proposals into one vesting contract using the latest starting date of 1-Jul-22.
+
+Proposal Summary:
+- Request 56.442 to one vesting contract with start date 1-Jul-22, 1 year Cliff and 3 years Duration.  
+- Contract is: 0x6720AA1B1A98E617d4a608ad5036b9E0C5D86056
+"
+QmdPy6BNLeNioroRcAvr1urr4XqvqHsrnJZ8LY5wW7A2Rx,DXvoice Multi-Sig -- Final top-up and new wallet authorization,"This proposal has been prepared to fund the DXvoice multi-sig with enough USDC to facilitate the payment of its remaining initiatives from 2022. 
+
+It also formally authorizes the updated DXvoice multi-sig and associated signers on each of its deployed chains.
+
+# Final payment details
+
+- Carrot Landing Page 2/2 -- **$3500** owed
+- Carrot marketing and landing page video 2/2 -- **$8000** to be owed
+- Total = **$11500 requested in USDC**
+
+Any currently held funds will be utilized on an as-needs basis for small initiatives. 
+
+# Multi-Sig Authorization
+
+- DXvoice MS (Multichain) 3 of 5 (**0x00Ce8162527Da8bD59056E2A54C3726886cBa676**) on Mainnet, Gnosis Chain, Polygon and Arbitrum One
+- **Signers (each containing more than 1% of REP) include:**
+  -  0x29e1a61fccd40408f489336993E798d14D57d77f
+  -  0x734C242BA2d6A47644093F874FA4dad15005CF19
+  -  0x91628ddc3A6ff9B48A2f34fC315D243eB07a9501
+  -  0x91AEF3c3b9BAb2c306548269Ff9b6771f2B107D8
+  -  0xB5806a701c2ae0366e15BDe9bE140E82190fa3d6
+
+Passage of this proposal formally recognizes the above multi-sig (0x00Ce8162527Da8bD59056E2A54C3726886cBa676) as the new definitive DXvoice MS. This would 'replace' the previous multi-sig, [found here](https://etherscan.io/address/0x35685398af991F43813475E189F791610ad0BE2b). 
+
+Some security details:
+
+- [Safe can recieve ERC-20 assets](https://etherscan.io/tx/0x222bbdd261f0565812a4b9c9db0bc3e6cdb3b4e3645938c82c8471a1a35f2248)
+- [Safe can send ERC-20 assets](https://etherscan.io/tx/0xce01033d523eb457cf99276ab5e6b1b2f6ab69a9e218cc2aea81695090809de3)"
+QmeNngDjX5AJ7hQn7mfDST8CTijUMwgDuq9mT119P5YN8X,Space Inch Development Work October 2022,"Space Inch is a development studio that has been providing contract work across Aqua and now Swapr. This is their 11th proposal. The proposal below is a payout for October 2022 totaling $31,588. Below is a recap of the contributions along with links to a Master Service Agreement and Scope of Work that govern the relationship going forward. These are written as contractual agreements between DXdao and Space Inch. Passage of this proposal is a “signature” from DXdao to those agreements.
+
+Timeframe
+
+October 1 - 31, 2022
+
+Responsibilities
+
+Michal:
+Michal continues to work on the Trades History specifically the feature/advanced trading view, which is a quite large and complicated pull request.
+
+Oskar (karczuRf):
+Oskar continues to work on the wallet-injector connector as well as the issues when using both coinbase and metamask wallets. Oskar completed: adding a bridge link on the nav bar; connecting logic to network switching button in collect flow; fixing the statuses list sorting and filtering; fixing the bridge error status tag; fixing the bridge transaction reject flow; adding New modal to show disclaimer that it will take 10 minutes to bridge; Replacing Create Liq mining with Create Rewards; and fixing the token list text field.
+
+Mikołaj Tęcza
+Mikołaj continues to work on improving and cleaning up reducer (reduce repeated code and create generic methods in EcoBridge). He is also continues working on trades history and Feature/advanced trading view. He completed: the swapbox initial state fix and the preselect output currency.
+
+Kacper Kończyk
+Kacper completed: adding the Cypress dashboard - a configuration for Cypress Dashboard (Modern web application testing made easy with Cypress Dashboard) - tool that is tracking all cypress and synpress tests results.
+
+Marek Kowalski:
+Marek handles code reviews, project oversight and architectural proposals.
+
+Josh Segall:
+Josh provides general oversight and strategic advice about roadmaps, product, and process.
+
+Compensation
+
+Work Completed from October 1 - 31, 2022
+
+Total Price = $31,588
+
+Link to Master Services Agreement and Scope of Work 2
+
+Link to SOW for Project #2 Development Work Proposal for Space Inch - Project #2
+
+Experience
+
+Space Inch started in 2010 by making mobile games and produced 90 million installs of original and published games. Now Space Inch primarily works as an outsource technology partner and consultant to various clients. Space Inch has offices in Nashville, Spain, Poland and Croatia. Space Inch’s services include strategic consulting, UI/UX design, discovery/scoping, architectural planning, engineering, and quality assurance. https://spaceinch.com/"
+QmXNk2JEvNgxigzEWe6W757sVdxCeYRxdzLrM2MryHGwEZ, Guerrap Contributor Proposal [01/10/2022 - 30/11/2022] [2/2],"**Timeframe**:
+
+- 2 months 01/10/2022 - 30/11/2022
+
+**Proposed Scope of Contribution:**
+
+- Goals/Responsibilities:
+   - Complete the development on dxstats and release a new version
+   - Onboarding on Carrot
+   - Start contributing to Carrot front-end
+   - Pick small UI tasks on Swapr
+
+Any new development on Dxstats will stop at the end of October unless significant issues emerge (like breaking bugs).
+
+**Compensation:**
+
+- Experience Level: 3
+- Time commitment: Part-time (10h/week)
+- Month 1 - reduced by 5 days since I couldn't work
+   - $937 (xDAI) → 5000/160 \* 40 - (5000/160 \* 10)
+   - $562 DXD vested for 3 years with a 1 year cliff starting the 01/10/2022 → 3000/160 \* 40 - (3000/160 \* 10)
+ - Month 2 reduced by 40% since I couldn't commit to 100% during this period
+   - $750 (xDAI) → 1250 - 500
+   - $440 DXD vested for 3 years with a 1 year cliff starting the 01/10/2022
+
+I’ll receive the monthly salary at the end of each month through the services provided by DevX AG.
+
+**Work Experience:**
+
+- Contribution proposal #1: Guerrap Contributor Proposal [14/03/2022 - 01/06/2022]
+- Contribution proposal #2: Guerrap Contributor Proposal [01/06/2022 - 31/07/2022]
+- Contribution proposal #3: Guerrap Contributor Proposal [01/08/2022 - 30/09/2022]
+
+I’m currently working as a full-stack developer (4+ years) in my full time job. I have contributed to a few open source projects that can be seen on my Github page.
+
+BEGIN KEYBASE SALTPACK ENCRYPTED MESSAGE. kiNJamlTJ29ZvW4 RHAOg9hm6h0Qhoz 41KW46hHYFnnZV6 I1ZxYqCy5eiolm0 D4Wa5lX9UibBL2E kXSNjMQ3FPpi3Fr 3ProNLGbjp65Cmf 2hwJOd2pPRXbnKW swO8lHLeMQhqvtC 0q8T52LsiplezKi TWPMIZw2CVusynr 2nv6E7Vj9Yytu0u 1SHlSBy3eX9Uew8 WksiG8TUm4cxwrF 5PNf3IecVq7WbBp Gl20HvS2sevUDi9 TJyAn4vHekJaiBm nw6ZS0LqDhDC6NY DM4t1mXpWvPObAG wwkL5vJ4698OeIM K3KuRbi3wbPR2ye kc21osRPqoBJqCW J3VLousv3kLgLoX yidrogdjjHqMR2c xOOG1yPdgAX7gyp 4Y3zhFzu4y0hhNF 6ld4hZUWirRs1Ys 5cxxgaSPn6F0WTU 8rzu9VGk8APLt1J L0wQZu0KSaN0u0t 7Jdw7N87ZQapXHT VhG0N8Zhhkav1dR jNZC7DNjzcfQyyC lM7OzwqkAKXEFg4 EgR5DwQH8CHukKU R606HzJMNFD2OPm 7vFCkCLZWqkTwtV YTTl39. END KEYBASE SALTPACK ENCRYPTED MESSAGE."
+QmNP4PR2CbhiU4Z4S2KF957dwLe1LUVpNWP6yDPewVzBB5,Approve New DXD Token Model,"_Tldr: The DXD Token Working Group proposes a new token model, where “DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.”_This was discussed on [DAOtalk here](https://daotalk.org/t/proposal-to-upgrade-the-dxd-token-model/4719/12) and submitted to on [mainnet here](https://daotalk.org/t/proposal-to-upgrade-the-dxd-token-model/4719/12), and for a [DXD Snapshot here](https://snapshot.org/#/dxdsnapshot.eth/proposal/0x5dc442df936c24b11703790e28785371159fd1a8b17e1472d895511ba1372822).
+
+## Background
+
+The DXD Bonding Curve was [launched in May of 2020](https://dxvote.eth.limo/#/mainnet/proposal/0xeb9cf2b3d76664dc1e983137f33b2400ad11966b1d79399d7ca55c25ad6283fa) by DXdao. The bonding curve was an effective fundraising tool but the mint/burn functions of the contract were never able to create a liquid market for DXD. In May 2021, DXdao [launched the DXD Buyback program](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) which purchased DXD off the open market using ETH from the general treasury as well as from the buyback reserve. The program [bought over 15,000 DXD](https://docs.google.com/spreadsheets/d/17C1fcq5JshfG8Zsi_Sv7lmqrrsdT9DKB69XMBkrUp2s/edit#gid=1629643942) (30% of circulating supply), but it was never viewed as a sustainable long-term model for DXD value accrual.
+
+Since the bonding curve launched, DXdao has built and managed several DeFi and governance products, diversified its treasury into $10m+ of stablecoins, and has a team of 20+ full-time contributors focused on building and growing the DXdao ecosystem. The DXD token is at the center of this ecosystem, but there has not been a formal link between the value that DXdao creates and the DXD token. This creates uncertainty for DXD holders, especially as DXD has traded at a significant discount to book value.
+
+In August 2022, DXdao [launched the DXD Token Working Group](https://dxvote.eth.limo/#/mainnet/proposal/0x40dd1973f7434d192946695919deb58176a192db0c37c8b9316202e006a88ba8) to draft a long-term model for DXD. The below signal proposal is an output from the Working Group.
+
+The proposal commits DXdao to:
+
+
+
+* Introduce four tools in the DXD Monetary Policy Framework that would enable a fair and liquid market for DXD
+* Establish a DXD Monetary Policy Committee
+* Funding product development and other initiatives that further DXdao’s core mission to enable community freedom 
+
+To further simplify and answer the question, “Why is DXD valuable?”, the WG affirms: **DXD gets its value from DXdao’s treasury, which grows from product revenue and its investments into decentralized technologies.**
+
+## Details
+
+**DXD Monetary Policy Framework**
+This proposal establishes four tools to be used by DXdao governance under guidance from the DXD Monetary Policy Committee. These are:
+
+
+
+* DXD Floor Price Guarantee - DXdao commits to buying any amount of DXD on the open market 
+* Inverse bonds - smart contracts where DXD can be deposited for a defined period of time in return for a certain % of DXdao treasury assets 
+* New DXD minted - allow DXD to be minted in exchange for assets at full NAV
+* Protocol-owned liquidity for DXD
+
+**DXD Monetary Policy Committee**
+Management of these tools requires close tracking of the DXD market as well as DXdao’s treasury. The committee should be at least three individuals and also include full-time contributors. This work should be compensated in vested DXD. The committee is tasked with:
+
+
+
+* Providing quarterly reports on general general direction and outlook of DXD
+* Issue monthly recommendations on inverse bond issuance and protocol-owned liquidity
+* Work with DXdao governance and treasury on managing redemptions
+
+**Product development funding**
+DXdao’s mission is to enable community freedom. It was launched in 2019 as a radical experiment in decentralization. The DXD fundraiser was intended to raise funds for product development in line with this vision. The new token model represents a new social contract between REP & DXD holders. The DXD Token WG affirms DXdao’s commitment to building and funding decentralized products that enable community freedom by committing at least 6% of DXdao’s treasury to fund DXdao’s product & operations for a year.
+
+This % can be changed at any time by governance and represents an overall budget suggestion for DXdao and is not a mandate to spend that amount, nor a maximum amount . This incentivizes the community to grow the size of the treasury.
+
+## Implementation
+
+This signal proposal is the output of the DXD Token Working Group, and if passed by REP & DXD holders, should be implemented by DXdao. Some of the elements will require significant development work before they can be put into practice. In the DXD Monetary Policy Framework, the DXD Floor Price Guarantee and the protocol-owned liquidity can be implemented using DXdao’s existing governance tools. 
+
+This proposal commits to implement:
+
+
+
+* DXD Floor Price Guarantee priced at 70% of the current DXD-NAV Ratio (DXD's circulating market cap to Treasury NAV)
+* Provide $250k in DXD/ETH on mainnet once DXD price hits 60% of Treasury NAV, another $250k deposit at 65%, and a $500k deposit when it hits 70% of NAV
+* When ready, DXdao governance commits to issuing:
+    * $500k in DXD inverse bonds with 85% payout after 6 months will be issued, along with 
+    * $500k in DXD inverse bonds with 90% of NAV payout after one year, and
+     - $1m in DXD Inverse bonds with 100% NAV payout after two years
+* The current DXD token contract should be upgraded and the funds returned to the general treasury
+
+## Definition and clarifications
+
+
+
+* Treasury NAV - ultimately defined by governance through guidance from the DXD Monetary Policy Committee. This proposal affirms treasury NAV includes all stablecoins, ETH (including staked ETH and other derivatives), Swapr LPs or other liquidity provisioning instruments. It incorporates the value of other treasury assets (like SWPR, ENS, etc) with a pre-defined liquidity discount. The DXD-NAV ratio is the DXD circulating market cap (as defined in the last DXD buyback proposal) divided by the Treasury NAV. This will be calculated at least bi-weekly.
+* Inverse bonds - these will be individually launched according to specific parameters (duration, dividend stream, etc). The bonds should payout the % of NAV when they are due, not the NAV when the bond is issued or the DXD deposited. Bonds will need to have a redemption currency of either ETH or Dai/USDC.
+* DXD Monetary Policy Committee is meant to involve engaged DXD holders in the formation of policy, but report preparation will need to be completed by DXdao contributors. Details of this will be further provided in the upcoming budget presentations by DXdao governance.
+* DXdao may implement other tools to the DXD Monetary Policy Framework in addition to the four listed above. The goal is to incentivize an organic fair market for DXD with minimal open market operations and minimal changes to the underlying liquidity for the treasury.
+* Execution of the price floor guarantee will occur on-chain through various trustless models. Previous DXD purchases were in smaller amounts, so executing on a larger scale will require more coordination.
+
+
+### Meeting Links:
+ - [DXD Token Meeting #1 (Sep 1)](https://daotalk.org/t/dxd-token-working-group-kick-off-call/4494)
+ - [DXD Token Meeting #2 (Sep 15)](https://daotalk.org/t/dxd-token-wg-meeting-comparison-of-token-models-sep-15/4530)
+ - [DXD Token Meeting #3 (Sep 29)](https://daotalk.org/t/dxd-token-wg-meeting-3-dxd-token-models-sep-29/4562)
+ - [DXD Token Meeting #4 (Nov 3)](https://daotalk.org/t/dxd-token-wg-meeting-4-nov-3/4640)
+ - [DXD Token Meeting #5 (Nov 17)](https://daotalk.org/t/dxd-token-wg-meeting-5-nov-17/4704)"
+QmNspRDQcwSQFzBNVDYuBYqtUemXZVwBfnohaWwbaYRH5i,​ Melanie Contributor Proposal 10/1/2022-11/30/2022 - END,"This concludes my proposal period from 10/1/2022-11/30/2022  and below is my reflection on the past 2 months of contributing at DXdao 
+
+**What went well:**
+
+October, as most know, was spent in Colombia where I participated in the Infinite Hackathon, Devcon, and our DXretreat. During this time, I assisted with organizing and collaborating with others to plan the events that occurred throughout the weeks we were there. As always, it was amazing to see everyone from DXdao and members of the Ethereum community! A personal highlight of mine was representing DXdao and hosting a workshop at Devcon 6 that focused on the Contributor Experience, Building the Builders: How You Can Create the Next Generation of Web3 Contributors through Education, Peer Review, and Professional Development. It was great to discuss the Contributor Experience with those others interested in the space.
+
+As outlined in my proposal, I began to shift attention this period toward recruiting. @AugustoL and I worked together to develop a process that would help us streamline the recruitment of Senior Solidity developers to DXdao. At the moment, we are recruiting a Senior Solidity developer for DXdao. Thus far, we have sourced and interviewed quite a few applicants. We are narrowing down our selection, and I feel confident we will onboard a contributor who can fill this role in the upcoming weeks.
+
+During this period, I also collaborated with @ross and @whatt4 on testing for Guilds, and we successfully sent all of the Infinite prizes from the DevOps Guild to our hacker winners. DAVI is pretty awesome!
+
+**What went okay**
+
+In November we faced quite a few challenges with the contributor proposal process. Mainly because Alchemy went offline and contributors who normally used Alchemy to submit their proposals had to transition to solely using DXvote. Unfortunately, due to this I had to dedicate more time than expected to individually supporting contributors through this process on DXvote.
+
+I will be claiming funds in this proposal in addition to my compensation. They are for DAVI testing, the txns can be found below, as well as payments I made for the Inifinte hackathon.
+
+https://etherscan.io/tx/0x608b4454b0138cf54fc289f711a7ae1e596131c6aefb9335ae227b75b789a555 $9.22
+https://etherscan.io/tx/0x5b2231f9b9cde5359d957b6f5de9ce9784882c36537eb039f0fd6d450d613e2f 23.07
+https://etherscan.io/tx/0x6fd5cf3be9263e55c7d14c849635d554d0fcb50d84578dfd59549193d34c09eb $1.77
+
+Infinite Hackathon Expenses
+
+- Banners: $525.58
+- Infinite Stickers: $69.25
+- Wristbands: $230.30"
+QmP2pHuRVnrKC4hynA3PM76UnNSGJjc4Aznk3LJVBKha5w, Madusha - Contributor Proposal [07/09/2022 - 06/11/2022] - Second Half,"*While the original proposal period ended on the 06th November, I was not working for the first two weeks of October. I'm compensating for this by adding extra 2 weeks until 20/11/2022.*
+
+# A Retrospective
+
+This proposal period has been quite productive, with DAVI launching in open beta, DXdao contracts v1.5 being audited and a lot of planning going into preparing the frontend for Gov 1.5. 
+
+We were able to quickly iterate over DAVI and push it through the closed beta and open beta, to prepare Guilds to go to production. Meanwhile we received the audit report for Governance 1.5 contracts. The identified issues have now been fixed and the changes are being reaudited.
+
+In this period I took a lot of time to work on a foundation for the DXgov subgraph implementations. The team is now actively developing a subgraph implementation for Guilds, with the intention of integrating this with  DAVI. I'm also working on an effort to unify all DXgov code repositories into a single monorepo, which will reduce our development time and increase productivity.
+
+Due to Devcon, the team was not available for a few weeks for development. Personally in this period I was also moving to Sweden and was not working. This has been reflected in the proposal as an extension of my contribution period.
+
+**Did well**
+- Supporting DAVI development efforts and collaborating with the team on brainstorming, planning and mobbing sessions.
+- Supporting DAVI deployment and DXdao contracts 1.5 audit fixes.
+- Initiating and structuring the DXgov subgraph and monorepo development efforts, hopefully resulting in faster development cycles.
+- I believe I've improved on my productivity and availability significantly, and will continue to make sure this is the case.
+
+**Improve on**
+- The ongoing struggles around governance and restructuring was taking a toll mentally, so I decided to step back and reduce the time I allocate for governance activities. Going forward I expect to be engaging in governance more.
+
+### Work completed
+
+* Find my completed pull requests for [frontend](https://github.com/DXgovernance/DAVI/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed+author%3Amprasanjith), [contracts](https://github.com/DXgovernance/dxdao-contracts/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed+author%3Amprasanjith), [subgraph](https://github.com/DXgovernance/dxdao-subgraph) and [monorepo](https://github.com/DXgovernance/davi-monorepo).
+
+### Compensation
+
+* $5600 ($7000 * 0.8) DAI to be sent on the second payment proposal
+* $4000 DXD ($5000 * 0.8) in a vesting contract continuously for three years
+* 0.13336% REP (0.1667% * 0.8), to be sent on the second payment proposal"
+QmRTVUHTocPsTbPM4zrrrUVYZSG1VKycRc8EsSHFA2E8Vw,Signal Proposal: DXdao at ETHDenver 2023 (test),"DXdao had a strong presence at ETHDenver in 2022. 
+
+Do you think DXdao should have a strong presence at ETH Denver 2023?
+"
+QmUYAVQjmXXwhwvgRMKQh8ojcZ7wojJuZQb3rofnxEcY3j, Milan V Contributor Proposal [14/11/2022 - 14/01/2023] First half,"**Timeframe:**
+
+14/11/2022 - 14/01/2023
+
+2 months
+
+**Responsibilities :**
+
+- Swapr PRs Manual Testing (in the distribution plan below)
+- Clear and succinct bugs reporting
+- Writing and improving test cases
+- Writing and improving test scenarios
+- Writing Automation test plans
+- Writing and executing Automated Tests
+- UI Testing
+- Smoke testing
+- Regression Testing
+- Updating and improving existing Automated Tests
+
+**Goals :**
+
+- Improve existing and develop new Manual and Automation tests (based on new features)
+- Update existing testing scenarios written for Swapr (based on new features)
+- Migrate Automation tests from Rinbkeby to Goerli and make fixes in the tests to make everything work.
+- Transferring test execution from Cypress Dashboard to Sorry Cypress in order to reduce costs and achieve better efficiency, it is also necessary to change a lot of things in automation tests.
+- For the duration of this period, the plan is that for the first month I will only be on Swapr, where the focus would be mostly on manual testing with all the before mentioned corrections required by Automation Tests. The following month I will continue working on Swapr with a possibility to support Carrot or DAVI in certain percentage.
+
+**Compensation:**
+
+Experience Level: Level 4
+
+Time commitment - 100%
+
+Contributing to DXdao since 1/3/2022
+
+**Time commitment:
+**
+
+Full-time 40 hours per week, for two months (14/11/2022-14/01/2023)
+
+$12000 DAI - for 2 months.
+
+$ 8000 DXD - Vested for three years with a 1-year cliff starting the 14 November 2022.
+
+0.3334% REP - for 2 months
+
+Salary for 2 months of work at Level 4, to be sent half on the first payment proposal and half on the second payment.
+
+**
+Previous work:**
+
+- https://daotalk.org/t/milan-v-contributor-proposal-1-3-2022-14-3-2022/3995
+- https://daotalk.org/t/milan-v-contributor-proposal-14-3-2022-14-5-2022/4028
+- https://daotalk.org/t/milan-v-contributor-proposal-14-5-2022-14-7-2022/4221
+- https://daotalk.org/t/milan-v-contributor-proposal-14-7-2022-14-9-2022-paris-stipend/4385
+- https://daotalk.org/t/milan-v-contributor-proposal-14-9-2022-14-11-2022/4554
+
+
+
+"
+QmNoR3KsS1PEQ8ghFirmrdRDkAU1hpEKPZgZpfjMgkuW42,DXdao Contributor stipend and Event budget ,"After the Refocus and Restructure proposal passed, DXdao committed to creating stricter event spending parameters and limiting the overall event budget to 150k.
+
+Below outlines a draft proposal for event spending and guidelines for contributor stipends in the upcoming year.
+
+**Overview**
+
+Contributor Stipend + Event budget allocations:
+
+- 100k - Contributor event stipend
+   - $4,000 annually per full-time contributor (based on an expected contributor count of ~25 )
+- 30k - DXdao offsite
+- 20k - DXdao conference or event sponsorships
+
+**100k - Contributor event stipend**
+
+DXdao encourages its contributors to attend conferences throughout the year as they are highly beneficial. Conferences help to promote professional contributor growth, provide an opportunity for product exposure, and allow for networking. Thus, we provide an individual stipend to DXdao contributors who are interested in participating in them. Contributor event stipends will be allocated based on the following criteria:
+
+- % of time contributing to DXdao
+  - All contributors are eligible for a stipend. The % commitment to DXdao determines the stipend amount
+  - For example, 80% contribution time - $3,200 annually ($1,600 /6 mos)
+- All conference stipends must be reviewed and approved ahead of time by the ContributorX
+- The event stipend distribution will be handled individually by guilds
+- In addition, if a contributor represents DXdao and hosts a talk, panel discussion, or workshop, they are eligible for an additional stipend beyond their annual event stipend. This additional stipend will require prior approval and be claimed through the Services guild. 
+
+**$30k - DXdao offsite**
+
+In line with the DXevents proposal that passed last year, we propose to continue our annual DXretreat in 2023 and request 30k for funding this offsite, (both previous off-site allocations were for 30k.) The ContributorX will be responsible for the coordination and execution of 2023 offsite. If a remaining budget is available, it has also been discussed to explore the idea of having a technical retreat in 2023. See here for further information on the 2021 DXretreat and 2022 DXretreat.
+
+**$20k - Conference or event sponsorships**
+
+We are proposing to allocate 20k towards potential DXdao conference or event sponsorships. The specifics of these sponsorships have not been confirmed yet by DXdao. Further details will be provided in standalone proposals for each sponsorship during the year.
+"

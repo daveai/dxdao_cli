@@ -18,12 +18,16 @@ def fetch_mainnet():
     avatar = '0x519b70055af55A007110B4Ff99b0eA33071c720a'
     w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/0nY-8QtxlISlugKf9W9NVF8V7oyrIgfC'))
     
+    assert w3.isConnected(), "Mainnet RPC connection failed"
+    
     # Contribution Proposals
     cp_scheme = '0x08cC7BBa91b849156e9c44DEd51896B38400f55B'
     abi = cp_abi
     scheme = w3.eth.contract(address=cp_scheme, abi=abi)
     proposals = scheme.events.NewContributionProposal.createFilter(fromBlock=get_block(net), argument_filters={'_avatar': avatar})
     proposal_events = proposals.get_all_entries()
+    
+    print('MAINNET Boosted Contribution Proposals:')
 
     for p in proposal_events:
         p = p['args']
@@ -59,21 +63,26 @@ def fetch_mainnet():
 def fetch_xdai():
     net = 'XDAI'
     avatar = '0xe716EC63C5673B3a4732D22909b38d779fa47c3F'
-    w3 = Web3(Web3.HTTPProvider("https://eth-mainnet.gateway.pokt.network/v1/5f3453978e354ab992c4da79"))
+    w3 = Web3(Web3.WebsocketProvider("wss://rpc.gnosischain.com"))
+    
+    #assert w3.isConnected(), "Gnosis RPC connection failed"
 
     # Genesis protocol
     gp = w3.eth.contract(address='0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF', abi=gp_abi)
 
     # Contribution proposals
-    cp_scheme = '0x016Bf002D361bf5563c76230D19B4DaB4d66Bda4'
+    cp_scheme = '0x0100F4B3D8A88D5729f0D4D516d436C901C2b4AF'
     abi = cp_abi
     scheme = w3.eth.contract(address=cp_scheme, abi=abi)
     # Get all proposals under the scheme
-    proposals = scheme.events.NewContributionProposal.getLogs(fromBlock=19002138)
+    proposals = scheme.events.NewContributionProposal.createFilter(fromBlock=0)
+    proposals = proposals.get_all_entries()
     # Filter for DXdao proposals
     proposal_events = [i for i in proposals if i['args']['_avatar'] == avatar]
     proposal_events = [i for i in proposals if gp.functions.isVotable('0x' + i['args']['_proposalId'].hex()).call()]
 
+    print('GNOSIS Boosted Contribution Proposals:')
+    
     for p in proposal_events:
         p = p['args']
         # Check if proposal is live
