@@ -124,7 +124,7 @@ def get_abi(address, network):
     return abi
 
 def get_title(proposal_hash):
-    ipfs_cache = pd.read_csv('scripts/ipfs_cache.csv')
+    ipfs_cache = pd.read_csv('dxdao_cli/scripts/ipfs_cache.csv')
     
     if proposal_hash in ipfs_cache.hash:
         title = ipfs_cache[ipfs_cache['hash'] == proposal_hash].title
@@ -137,7 +137,7 @@ def get_title(proposal_hash):
                 'title': title,
                 'text': text}
         ipfs_cache = ipfs_cache.append(data, ignore_index=True)
-        ipfs_cache.to_csv('scripts/ipfs_cache.csv', index=False)
+        ipfs_cache.to_csv('dxdao_cli/scripts/ipfs_cache.csv', index=False)
     except ValueError:
         title = "IPFS not returning Title"
     return title

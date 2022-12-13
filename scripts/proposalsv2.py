@@ -98,17 +98,17 @@ def parse_proposals(proposals, net):
     mc = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/multiCall.json')))
     ens = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/ensScheme.json')))
     scheme_register = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/schemeRegister.json')))
-    print(f'{net['net']} Boosted Proposals:')
-    for p in proposals:
-        receipt = w3.eth.getTransactionReceipt(p['transactionHash'])
-        if p['scheme'] in contributorSchemes:
+    print(f"{net['net']} Boosted Proposals:")
+    for _p in proposals:
+        receipt = w3.eth.getTransactionReceipt(_p['transactionHash'])
+        if _p['scheme'] in contributorSchemes:
             logs = cs.events.NewContributionProposal().processReceipt(receipt)
-            logs = [l for l in logs if '0x' + l['args']['_proposalId'].hex() == p['proposalId']]
+            logs = [l for l in logs if '0x' + l['args']['_proposalId'].hex() == _p['proposalId']]
             p = logs[0]['args']
             print(get_title(p['_descriptionHash']))
             print('0x' + p['_proposalId'].hex())
-            if logs[0]['votes'] == 1:
-                print(f"Proposal passing: :white_check_mark")
+            if _p['votes'] == 1:
+                print(f"Proposal passing: :white_check_mark:")
             else:
                 print(f"Proposal passing: :red_circle:")
             if p['_rewards'][1] > 0:
@@ -119,7 +119,7 @@ def parse_proposals(proposals, net):
             if p['_reputationChange'] != 0:
                 print('REP:', round(Wei(p['_reputationChange']).to('ether'), 2))
             print('')
-        else:
+        if _p['scheme'] in multicallSchemes:
             pass
         
 def get_title(proposal_hash):
