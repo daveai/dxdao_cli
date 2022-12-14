@@ -16,6 +16,7 @@ ts_30 = int(thirty_days_ago.timestamp())
 
 mainnet = {
     'net': 'MAINNET',
+    'emoji': ':eth:',
     'rpc': 'https://eth-mainnet.alchemyapi.io/v2/0nY-8QtxlISlugKf9W9NVF8V7oyrIgfC',
     'vms': ['0x1C18bAd5a3ee4e96611275B13a8ed062B4a13055', '0x332B8C9734b4097dE50f302F7D9F273FFdB45B84'],
     'avatar': '0x519b70055af55A007110B4Ff99b0eA33071c720a',
@@ -25,6 +26,7 @@ mainnet = {
 
 gnosis = {
     'net': 'GNOSIS',
+    'emoji': ':gnosis:',
     'rpc': 'https://rpc.gnosischain.com',
     'vms': ['0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF'],
     'avatar': '0xe716EC63C5673B3a4732D22909b38d779fa47c3F',
@@ -34,6 +36,7 @@ gnosis = {
 
 arbitrum = {
     'net': 'ARBITRUM',
+    'emoji': '',
     'rpc': 'https://arb1.arbitrum.io/rpc',
     'vms': ['0x02F93D46C2B56777e9C82CF40917979375C2c711'],
     'avatar': '0x2B240b523f69b9aF3adb1C5924F6dB849683A394',
@@ -76,7 +79,7 @@ def fetch_proposals(net):
         # Filter by avatar
         _proposals = [p for p in _proposals if p['args']['_organization'] == net['avatar']]
         # Filter by state
-        _proposals = [p for p in _proposals if vm.functions.state('0x' + p['args']['_proposalId'].hex()).call() in [5, 6]]
+        _proposals = [p for p in _proposals if vm.functions.state('0x' + p['args']['_proposalId'].hex()).call() in [4, 5, 6]]
         # Get scheme for each proposal
         for p in _proposals:
             _proposal_state = vm.functions.proposals('0x' + p['args']['_proposalId'].hex()).call()
@@ -98,7 +101,7 @@ def parse_proposals(proposals, net):
     mc = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/multiCall.json')))
     ens = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/ensScheme.json')))
     scheme_register = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/schemeRegister.json')))
-    print(f"{net['net']} Boosted Proposals:")
+    print(f"{net['emoji']}{net['net']} Boosted Proposals{net['emoji']}:")
     for _p in proposals:
         receipt = w3.eth.getTransactionReceipt(_p['transactionHash'])
         if _p['scheme'] in contributorSchemes:
