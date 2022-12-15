@@ -101,7 +101,7 @@ def parse_proposals(proposals, net):
     mc = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/multiCall.json')))
     ens = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/ensScheme.json')))
     scheme_register = w3.eth.contract(address='0x8E900Cf9BD655e34bb610f0Ef365D8d476fD7337', abi=json.load(open('abis/schemeRegister.json')))
-    print(f"{net['emoji']}{net['net']} Boosted Proposals{net['emoji']}:")
+    print(f"{net['emoji']*4} {net['net']} {net['emoji']*4}:")
     for _p in proposals:
         receipt = w3.eth.getTransactionReceipt(_p['transactionHash'])
         if _p['scheme'] in contributorSchemes:
