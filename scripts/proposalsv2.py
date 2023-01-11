@@ -115,7 +115,10 @@ def parse_proposals(proposals, net):
             else:
                 print(f"Proposal passing: :red_circle:")
             if p['_rewards'][1] > 0:
-                print('xDai:', round(Wei(p['_rewards'][1]).to('ether'), 2))
+                if net['net'] == 'MAINNET':
+                    print('ETH:', round(Wei(p['_rewards'][1]).to('ether'), 2))
+                else:
+                    print('xDai:', round(Wei(p['_rewards'][1]).to('ether'), 2))
             if p['_rewards'][2] > 0:
                 erc20, decimals = check_erc20(p['_externalToken'])
                 print(f'{erc20}:', round(p['_rewards'][2] / 10**decimals, 2))
